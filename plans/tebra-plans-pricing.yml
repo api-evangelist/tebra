@@ -1,0 +1,112 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Tebra
+providerId: tebra
+created: '2026-07-10'
+modified: '2026-07-10'
+reconciled: false
+tags:
+- Healthcare
+- Practice Management
+- EHR
+- Medical Billing
+- API
+- Plans
+description: >-
+  Tebra (formerly Kareo + PatientPop) does not publish standalone API pricing.
+  API access is a capability of the Tebra platform subscription rather than a
+  separately metered product. Two distinct API surfaces exist. The Tebra SOAP
+  Practice Management API (the former Kareo Integration API) is partner /
+  admin-gated - a practice System Administrator generates a customer key and
+  grants permissions before an integrator can call it, and third-party developers
+  typically engage Tebra to be onboarded. The Tebra Clinical Data API is the ONC
+  patient-access API mandated by the 21st Century Cures Act; patients generate
+  their own API Key from the Patient Portal at no charge to read their own
+  clinical data. Underlying Tebra platform subscriptions are quote-based and
+  reported in the roughly $49 to $799 per provider per month range depending on
+  modules (EHR, practice management, billing, growth), with payment processing
+  and certain integrations billed separately. Exact figures are not reconciled
+  here.
+notes: >-
+  Verify current platform pricing and any API onboarding or partner fees directly
+  with Tebra sales. The Clinical Data (MACRA / patient-access) API is provided at
+  no cost to the patient per federal information-blocking rules.
+sources:
+- https://www.tebra.com/pricing
+- https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
+- https://www.tebra.com/macra
+plans:
+- id: tebra-clinical-patient-access
+  name: Clinical Data API (Patient Access)
+  type: free
+  description: >-
+    ONC / 21st Century Cures Act patient-access API. A patient generates an
+    API Key from the Tebra Patient Portal and reads their own USCDI clinical
+    data (conditions, medications, allergies, immunizations, vitals, encounters,
+    documents, and more) over REST. No charge to the patient.
+  entries:
+  - label: Patient Clinical Data Access
+    name: clinical_patient_access
+    type: usage
+    metric: requests
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free (patient access; connection frequency limited by fair-use)
+    userMultiplied: false
+  elements:
+  - name: USCDI Clinical Resources
+  - name: Binary Clinical Summary (C-CDA)
+  - name: X-Api-Key Authentication
+- id: tebra-soap-integration
+  name: SOAP Practice Management API (Partner / Customer)
+  type: subscription
+  description: >-
+    The Tebra SOAP API (formerly the Kareo Integration API) covering patients,
+    appointments, providers, practices, charges, encounters, payments, and
+    transactions. Available to Tebra customers and integration partners as a
+    capability of a Tebra platform subscription. A practice System Administrator
+    must generate a customer key and grant permissions before use; there is no
+    self-serve public signup.
+  entries:
+  - label: Tebra Platform Subscription
+    name: platform_subscription
+    type: flat
+    metric: provider
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: quote-based (reported approx. $49-$799 per provider per month by module)
+    userMultiplied: true
+  elements:
+  - name: SOAP Practice Management API
+  - name: Customer Key + Permissions
+  - name: Patients / Appointments / Billing / Providers
+- id: tebra-enterprise
+  name: Enterprise / Partner Integration
+  type: enterprise
+  description: >-
+    Negotiated arrangements for integration partners, health systems, billing
+    companies, and higher-volume API use. Terms, onboarding, and any partner
+    fees are handled through Tebra sales / partner programs.
+  entries:
+  - label: Partner Agreement
+    name: partner_agreement
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Partner Onboarding
+  - name: Custom Terms
+  - name: Volume / Throttle Adjustments
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

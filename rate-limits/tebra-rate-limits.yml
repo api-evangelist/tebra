@@ -1,0 +1,66 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Tebra
+providerId: tebra
+created: '2026-07-10'
+modified: '2026-07-10'
+reconciled: false
+tags:
+- Healthcare
+- Practice Management
+- EHR
+- Rate Limiting
+- Quotas
+description: >-
+  Tebra does not publish fixed numeric rate limits for either API surface. The
+  SOAP Practice Management API (formerly the Kareo Integration API) applies
+  server-side throttling; the WSDL exposes a GetThrottles operation so an
+  integrator can read the throttle settings that apply to their customer key.
+  Because Tebra does not push data to external systems, integrators poll for
+  changes - Tebra's own guidance recommends polling no more frequently than
+  every 5 to 15 minutes. The Clinical Data (patient-access) API instructs
+  callers over HTTPS to "limit your connection frequency as appropriate for your
+  use case," noting that connection attempts more frequent than permitted are
+  not allowed. Specific per-second or per-day numeric caps are not published for
+  either API as of the review date.
+notes: >-
+  Use the SOAP GetThrottles operation to discover the throttle limits assigned
+  to your customer key. Poll batch retrieval operations (GetAppointments,
+  GetPatients, GetCharges, etc.) at 5-15 minute intervals rather than tighter
+  loops. Confirm any account-specific limits with Tebra during partner
+  onboarding.
+sources:
+- https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
+- https://www.tebra.com/wp-content/uploads/2023/10/General_API_Documentation-Tebra.pdf
+- https://webservice.kareo.com/services/soap/2.1/KareoServices.svc?wsdl
+responseCodes:
+  unauthorized: 401
+limits:
+- name: SOAP API Throttle
+  scope: customer-key
+  metric: requests
+  limit: server-side throttled (read via GetThrottles)
+  notes: Tebra applies per-customer-key throttling; exact numeric values are not published.
+- name: SOAP Polling Cadence
+  scope: integration
+  metric: poll-interval
+  limit: recommended 5-15 minutes
+  notes: Tebra does not push data out; integrators poll on a 5-15 minute cadence to retrieve updates.
+- name: Clinical API Connection Frequency
+  scope: api-key
+  metric: connections
+  limit: fair-use (not published)
+  notes: Callers must limit connection frequency to their use case; over-frequent attempts are not allowed.
+policies:
+- name: No Push / Polling
+  description: >-
+    The SOAP API does not push notifications or webhooks to external systems.
+    Integrators must poll retrieval operations for new and changed data.
+- name: Throttle Discovery
+  description: The SOAP GetThrottles operation returns the throttle configuration in effect for the calling customer key.
+- name: HTTPS Only
+  description: All API access must occur over an HTTPS (TLS) connection.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

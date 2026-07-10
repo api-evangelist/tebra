@@ -1,0 +1,175 @@
+aid: tebra
+url: https://raw.githubusercontent.com/api-evangelist/tebra/refs/heads/main/apis.yml
+name: Tebra
+kind: company
+description: >-
+  Tebra is a healthcare technology company providing an all-in-one operating
+  system for independent medical practices - EHR, practice management, medical
+  billing, patient engagement, and practice growth. Tebra was formed from the
+  2021 merger of Kareo (practice management and billing) and PatientPop
+  (practice growth), and its developer surface reflects that lineage. Two
+  documented API surfaces exist. The Tebra SOAP Practice Management API - the
+  former Kareo Integration API, still served at webservice.kareo.com - covers
+  patients, appointments, providers, practices, charges, encounters, payments,
+  and transactions, and is partner / administrator gated. The Tebra Clinical
+  Data API is a REST patient-access API published under tebra.com/macra (ONC /
+  21st Century Cures Act), exposing USCDI clinical data with an API Key the
+  patient generates from the Tebra Patient Portal.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Healthcare
+- Practice Management
+- EHR
+- Medical Billing
+- Patient Engagement
+- Kareo
+- PatientPop
+created: '2026-07-10'
+modified: '2026-07-10'
+specificationVersion: '0.19'
+apis:
+- aid: tebra:tebra-patients-api
+  name: Tebra Patients API
+  tags:
+  - Patients
+  - Demographics
+  - SOAP
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
+  baseURL: https://webservice.kareo.com/services/soap/2.1
+  properties:
+  - url: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
+    type: Documentation
+  - url: https://webservice.kareo.com/services/soap/2.1/KareoServices.svc?wsdl
+    type: WSDL
+  description: >-
+    SOAP operations for patient records - GetPatient, GetPatients, GetAllPatients,
+    CreatePatient, UpdatePatient, UpdatePatientsExternalID, and
+    UpdatePrimaryPatientCase. Part of the former Kareo Integration API. Access is
+    administrator gated - a practice System Administrator generates a customer key
+    and grants permissions. Operation names confirmed from the live WSDL.
+- aid: tebra:tebra-appointments-api
+  name: Tebra Appointments API
+  tags:
+  - Appointments
+  - Scheduling
+  - SOAP
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
+  baseURL: https://webservice.kareo.com/services/soap/2.1
+  properties:
+  - url: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
+    type: Documentation
+  - url: https://webservice.kareo.com/services/soap/2.1/KareoServices.svc?wsdl
+    type: WSDL
+  description: >-
+    SOAP operations for scheduling - GetAppointment, GetAppointments,
+    CreateAppointment, UpdateAppointment, UpdateAppointmentStatus,
+    DeleteAppointment, plus GetAppointmentReasons and CreateAppointmentReason.
+    Tebra does not push updates, so integrators poll (recommended every 5-15
+    minutes). Operation names confirmed from the live WSDL.
+- aid: tebra:tebra-providers-practices-api
+  name: Tebra Providers and Practices API
+  tags:
+  - Providers
+  - Practices
+  - Locations
+  - SOAP
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
+  baseURL: https://webservice.kareo.com/services/soap/2.1
+  properties:
+  - url: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
+    type: Documentation
+  - url: https://webservice.kareo.com/services/soap/2.1/KareoServices.svc?wsdl
+    type: WSDL
+  description: >-
+    SOAP reference-data operations - GetProviders, GetPractices,
+    GetServiceLocations, and GetProcedureCodes - used to resolve the providers,
+    practices, locations, and procedure codes referenced by patients,
+    appointments, and charges. Operation names confirmed from the live WSDL.
+- aid: tebra:tebra-billing-claims-api
+  name: Tebra Billing and Claims API
+  tags:
+  - Billing
+  - Claims
+  - Charges
+  - Payments
+  - SOAP
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
+  baseURL: https://webservice.kareo.com/services/soap/2.1
+  properties:
+  - url: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
+    type: Documentation
+  - url: https://webservice.kareo.com/services/soap/2.1/KareoServices.svc?wsdl
+    type: WSDL
+  description: >-
+    SOAP revenue-cycle operations covering charges, encounters, payments, and
+    transactions - GetCharges, GetEncounterDetails, CreateEncounter,
+    UpdateEncounterStatus, GetPayments, CreatePayment, and GetTransactions. This
+    is the billing and claims surface of the former Kareo Integration API.
+    Operation names confirmed from the live WSDL.
+- aid: tebra:tebra-documents-api
+  name: Tebra Documents API
+  tags:
+  - Documents
+  - Attachments
+  - SOAP
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
+  baseURL: https://webservice.kareo.com/services/soap/2.1
+  properties:
+  - url: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
+    type: Documentation
+  - url: https://webservice.kareo.com/services/soap/2.1/KareoServices.svc?wsdl
+    type: WSDL
+  description: >-
+    SOAP operations for attaching and removing documents on practice records -
+    CreateDocument and DeleteDocument - along with external-vendor utilities
+    GetExternalVendors, RegisterExternalVendor, GetCustomerIdFromKey, and
+    GetThrottles. Operation names confirmed from the live WSDL.
+- aid: tebra:tebra-clinical-data-api
+  name: Tebra Clinical Data API
+  tags:
+  - Clinical
+  - USCDI
+  - Patient Access
+  - REST
+  - MACRA
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.tebra.com/macra
+  baseURL: https://api.tebra.com/clinical/v1/api
+  properties:
+  - url: https://www.tebra.com/macra
+    type: Documentation
+  - url: https://www.tebra.com/wp-content/uploads/2023/10/General_API_Documentation-Tebra.pdf
+    type: APIReference
+  - url: openapi/tebra-clinical-openapi.yml
+    type: OpenAPI
+  - url: collections/tebra-clinical.postman_collection.json
+    type: PostmanCollection
+  description: >-
+    REST patient-access API (ONC / 21st Century Cures Act) exposing USCDI
+    clinical data for a single authenticated patient - conditions, medications,
+    allergies, immunizations, vital signs, procedures, encounters, care plans,
+    goals, devices, diagnostic reports, smoking status, and a binary clinical
+    summary. Authenticated with an API Key in the X-Api-Key header, generated by
+    the patient in the Tebra Patient Portal. Resource paths and auth confirmed
+    from Tebra documentation; request parameters and response schemas modeled.
+common:
+- type: LinkedIn
+  url: https://www.linkedin.com/company/tebra
+- type: Website
+  url: https://www.tebra.com
+- type: Documentation
+  url: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
+- type: Plans
+  url: plans/tebra-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/tebra-rate-limits.yml
+- type: FinOps
+  url: finops/tebra-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/tebra-clinical-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiKeyAuth
+  type: apiKey
+  in: header
+  parameter: X-Api-Key
+  description: Patient-generated API Key from the Tebra Patient Portal (My Account > API Access
+    Key). A missing, revoked, or invalid key returns 401 Unauthorized.
+  sources:
+  - openapi/tebra-clinical-openapi.yml

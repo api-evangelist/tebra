@@ -158,6 +158,12 @@ apis:
     the patient in the Tebra Patient Portal. Resource paths and auth confirmed
     from Tebra documentation; request parameters and response schemas modeled.
 common:
+- type: TrustCenter
+  url: security/tebra-trust-center.yml
+- type: DomainSecurity
+  url: security/tebra-domain-security.yml
+- type: Authentication
+  url: authentication/tebra-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/tebra
 - type: Website

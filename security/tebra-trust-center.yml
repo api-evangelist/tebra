@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://www.tebra.com/security
+url: https://www.tebra.com/security
+certifications:
+- PCI DSS
+- HIPAA
+evidence:
+- source: https://www.tebra.com/security
+  keywords:
+  - pci dss
+  - hipaa

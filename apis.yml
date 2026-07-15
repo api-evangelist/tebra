@@ -158,6 +158,8 @@ apis:
     the patient in the Tebra Patient Portal. Resource paths and auth confirmed
     from Tebra documentation; request parameters and response schemas modeled.
 common:
+- type: AgenticAccess
+  url: agentic-access/tebra-agentic-access.yml
 - type: TrustCenter
   url: security/tebra-trust-center.yml
 - type: DomainSecurity

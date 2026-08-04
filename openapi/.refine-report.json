@@ -1,0 +1,18 @@
+{
+  "provider": "tebra",
+  "sources": [
+    "tebra-clinical-api-openapi.yml",
+    "tebra-documents-api-openapi.yml",
+    "tebra-patient-api-openapi.yml"
+  ],
+  "outputs": [
+    "tebra-clinical-api-openapi.yml",
+    "tebra-documents-api-openapi.yml",
+    "tebra-patient-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

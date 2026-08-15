@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tebra Data Clinical Documents API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get clinical summary document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tebra.com/clinical/v1/api/patient/binary/summary"
+          },
+          "docs": "Retrieves the patient's clinical summary as a binary document (e.g. a C-CDA). Confirmed endpoint; response modeled."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

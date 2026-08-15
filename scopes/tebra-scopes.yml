@@ -1,0 +1,196 @@
+generated: '2026-08-14'
+method: derived
+source: openapi/tebra-fhir-api-openapi.yml
+docs: https://www.tebra.com/wp-content/uploads/2025/05/Tebra-FHIR-API-User-Guide.pdf
+docs_note: >-
+  The guide's Technical Documentation section requires apps to "enter the SMART
+  scopes required for the application" but does not publish an enumerated scope
+  catalog, so the scope strings here are derived (standard SMART v1
+  `patient|system/<Resource>.read` syntax) from the resource list Tebra's own
+  guide documents, not copied verbatim from a scopes reference page.
+schemes:
+- name: smartOnFhirAuthCode
+  source: openapi/tebra-fhir-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://fhir.prd.cloud.tebra.com/smartauth/oauth/authorize
+    tokenUrl: https://fhir.prd.cloud.tebra.com/smartauth/oauth/token
+  description: SMART on FHIR 3-legged OAuth 2.0 authorization-code flow for user-facing (patient/provider)
+    applications. Authorization/token URLs are confirmed verbatim from the Tebra FHIR API User
+    Guide. The scope list below is DERIVED, not verbatim - Tebra's guide instructs developers
+    to "enter the SMART scopes required" without publishing an enumerated list, so these are
+    the standard SMART v1 `patient/<Resource>.read` scope strings applied to the resource set
+    Tebra's own guide documents.
+- name: smartOnFhirClientCredentials
+  source: openapi/tebra-fhir-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://fhir.prd.cloud.tebra.com/smartauth/oauth/token
+  description: SMART on FHIR 2-legged OAuth 2.0 client-credentials flow for backend services
+    applications (no end-user present). Token endpoint is confirmed verbatim from the Tebra
+    FHIR API User Guide; Tebra currently supports only the Client Credentials workflow (not
+    JWKS-based backend auth). Scope strings below are DERIVED (`system/<Resource>.read`, standard
+    SMART v1 syntax), not verbatim - see note above.
+scopes:
+- scope: fhirUser
+  description: FHIR user identity claim.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: launch/patient
+  description: Identify the launch patient context.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: offline_access
+  description: Obtain a refresh token.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: openid
+  description: OpenID Connect identity claim.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: patient/AllergyIntolerance.read
+  description: Read the patient's allergies/intolerances.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: patient/CarePlan.read
+  description: Read the patient's care plans.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: patient/CareTeam.read
+  description: Read the patient's care team.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: patient/Condition.read
+  description: Read the patient's conditions/problems.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: patient/Device.read
+  description: Read the patient's implantable devices.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: patient/DiagnosticReport.read
+  description: Read the patient's diagnostic reports.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: patient/DocumentReference.read
+  description: Read the patient's documents/clinical notes.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: patient/Encounter.read
+  description: Read the patient's encounters.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: patient/Goal.read
+  description: Read the patient's goals.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: patient/Immunization.read
+  description: Read the patient's immunizations.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: patient/Location.read
+  description: Read location resources.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: patient/Medication.read
+  description: Read medication resources.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: patient/MedicationRequest.read
+  description: Read the patient's medication requests.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: patient/Observation.read
+  description: Read the patient's observations (vitals/labs/smoking status).
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: patient/Organization.read
+  description: Read organization resources.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: patient/Patient.read
+  description: Read the patient's demographic record.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: patient/Practitioner.read
+  description: Read practitioner resources.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: patient/PractitionerRole.read
+  description: Read practitioner-role resources.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: patient/Procedure.read
+  description: Read the patient's procedures.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: patient/Provenance.read
+  description: Read provenance resources.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: system/DocumentReference.read
+  description: Read document reference resources.
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: system/Observation.read
+  description: Read observation resources.
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- scope: system/Patient.read
+  description: Read patient demographic records.
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml

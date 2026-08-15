@@ -1,0 +1,1546 @@
+{
+  "item": [
+    {
+      "id": "0f42bfce-ef4f-46fe-9dfd-2b45ed57f299",
+      "name": "Clinical",
+      "description": {
+        "content": "USCDI-aligned clinical data classes for the authenticated patient.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "87275e1b-a1bc-4b04-bd70-8063b6663ce9",
+          "name": "Get medication allergies and intolerances",
+          "request": {
+            "name": "Get medication allergies and intolerances",
+            "description": {
+              "content": "Retrieves allergy and intolerance records associated with the patient. Confirmed endpoint; response is modeled as a USCDI AllergyIntolerance list.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "patient",
+                "allergyIntolerance",
+                "medication"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "235b48da-283b-4272-97ee-5559a854cad3",
+              "name": "Allergy / intolerance list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "allergyIntolerance",
+                    "medication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"string\",\n  \"entry\": [\n    {\n      \"key_0\": 6014.521792282533,\n      \"key_1\": true\n    },\n    {\n      \"key_0\": false,\n      \"key_1\": 4747\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "039d4fb8-d85b-4c7d-a2e1-d82e7a4ed0ec",
+              "name": "The API Key is missing, revoked, or otherwise not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "allergyIntolerance",
+                    "medication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"message\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b095edd-c26f-40b1-a513-98daf9e4a787",
+          "name": "Get care plan",
+          "request": {
+            "name": "Get care plan",
+            "description": {
+              "content": "Retrieves care plan entries for the patient. Confirmed endpoint; response modeled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "patient",
+                "carePlan"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9a397433-5553-49d4-9c9c-28717a59a3b4",
+              "name": "Care plan list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "carePlan"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"string\",\n  \"entry\": [\n    {\n      \"key_0\": 9658,\n      \"key_1\": 8517.203423617822\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 3331.302909469469,\n      \"key_2\": 9056\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29bc6624-cfa6-4969-b16a-cc7687a29bc5",
+              "name": "The API Key is missing, revoked, or otherwise not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "carePlan"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"message\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d49d640-9cd2-428a-9bca-8ab68c49cb58",
+          "name": "Get problem list conditions",
+          "request": {
+            "name": "Get problem list conditions",
+            "description": {
+              "content": "Retrieves problem-list conditions for the patient. Confirmed endpoint; response modeled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "patient",
+                "condition",
+                "problemList"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8396ef99-c850-4171-a67c-a5746fcc245e",
+              "name": "Condition list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "condition",
+                    "problemList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"string\",\n  \"entry\": [\n    {\n      \"key_0\": 9658,\n      \"key_1\": 8517.203423617822\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 3331.302909469469,\n      \"key_2\": 9056\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bf7a16c-dd6f-496f-a2cd-67e770b65059",
+              "name": "The API Key is missing, revoked, or otherwise not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "condition",
+                    "problemList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"message\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c5260c3-4dea-4559-b96b-161d46c007d4",
+          "name": "Get implantable devices",
+          "request": {
+            "name": "Get implantable devices",
+            "description": {
+              "content": "Retrieves device records associated with the patient. Confirmed endpoint; response modeled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "patient",
+                "device"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ef7c84b5-1ee3-406f-bf97-d46968634f35",
+              "name": "Device list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "device"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"string\",\n  \"entry\": [\n    {\n      \"key_0\": 9658,\n      \"key_1\": 8517.203423617822\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 3331.302909469469,\n      \"key_2\": 9056\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe8e23a5-671e-4b72-9f7a-51cf7a7c4d3b",
+              "name": "The API Key is missing, revoked, or otherwise not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "device"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"message\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6da84257-200c-44d4-8cbf-4d55032657f9",
+          "name": "Get diagnostic reports",
+          "request": {
+            "name": "Get diagnostic reports",
+            "description": {
+              "content": "Retrieves diagnostic report records for the patient. Confirmed endpoint; response modeled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "patient",
+                "diagnosticReport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eaea216a-cb73-4e33-8d64-9c9d5ea63df2",
+              "name": "Diagnostic report list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "diagnosticReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"string\",\n  \"entry\": [\n    {\n      \"key_0\": 9658,\n      \"key_1\": 8517.203423617822\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 3331.302909469469,\n      \"key_2\": 9056\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d5b6fc4-5581-404a-8d10-c7c645beb4b2",
+              "name": "The API Key is missing, revoked, or otherwise not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "diagnosticReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"message\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75130879-2481-47bf-ab4a-f7e19ffe98bb",
+          "name": "Get encounters",
+          "request": {
+            "name": "Get encounters",
+            "description": {
+              "content": "Retrieves encounter records associated with the patient. Confirmed endpoint; response modeled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "patient",
+                "encounter"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f05c3a25-c289-45d0-8c07-c5aef39554a7",
+              "name": "Encounter list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "encounter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"string\",\n  \"entry\": [\n    {\n      \"key_0\": 9658,\n      \"key_1\": 8517.203423617822\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 3331.302909469469,\n      \"key_2\": 9056\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "859b55cd-1a91-43b3-98ff-68c31aa05ec2",
+              "name": "The API Key is missing, revoked, or otherwise not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "encounter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"message\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e8c35d7-98f6-4fe8-bda2-f3f2d167ce91",
+          "name": "Get goals",
+          "request": {
+            "name": "Get goals",
+            "description": {
+              "content": "Retrieves care goals for the patient. Confirmed endpoint; response modeled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "patient",
+                "goal"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9d5089ee-1d78-4755-b4df-b26e31f7ce34",
+              "name": "Goal list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "goal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"string\",\n  \"entry\": [\n    {\n      \"key_0\": 9658,\n      \"key_1\": 8517.203423617822\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 3331.302909469469,\n      \"key_2\": 9056\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e47a75e-fa93-4403-9598-cded8d85991d",
+              "name": "The API Key is missing, revoked, or otherwise not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "goal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"message\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7b881dd-9787-44ed-9cf1-a808aefa8c9b",
+          "name": "Get immunizations",
+          "request": {
+            "name": "Get immunizations",
+            "description": {
+              "content": "Retrieves immunization records for the patient. Confirmed endpoint; response modeled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "patient",
+                "immunization"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8660aa74-5c10-4613-b983-a35e4365e9af",
+              "name": "Immunization list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "immunization"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"string\",\n  \"entry\": [\n    {\n      \"key_0\": 9658,\n      \"key_1\": 8517.203423617822\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 3331.302909469469,\n      \"key_2\": 9056\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "270f76c1-a30e-421c-9abc-cef17e5a1c7b",
+              "name": "The API Key is missing, revoked, or otherwise not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "immunization"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"message\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8cb207a9-536b-4211-b3de-62ff2662b993",
+          "name": "Get medications",
+          "request": {
+            "name": "Get medications",
+            "description": {
+              "content": "Retrieves medication statement records for the patient. Confirmed endpoint; response modeled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "patient",
+                "medicationStatement"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6e908af1-610c-403e-8732-0186e65c4fe2",
+              "name": "Medication statement list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "medicationStatement"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"string\",\n  \"entry\": [\n    {\n      \"key_0\": 9658,\n      \"key_1\": 8517.203423617822\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 3331.302909469469,\n      \"key_2\": 9056\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c27b1028-b6f6-45b5-b888-7961a0ddea8f",
+              "name": "The API Key is missing, revoked, or otherwise not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "medicationStatement"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"message\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "928baa66-1a13-477d-a008-d10b19289775",
+          "name": "Get vital signs",
+          "request": {
+            "name": "Get vital signs",
+            "description": {
+              "content": "Retrieves vital sign observations for the patient. Confirmed endpoint; response modeled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "patient",
+                "observation",
+                "vitalSigns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a93fcdec-d49c-4138-b0b7-42ce44cfff0f",
+              "name": "Vital sign observation list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "observation",
+                    "vitalSigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"string\",\n  \"entry\": [\n    {\n      \"key_0\": 9658,\n      \"key_1\": 8517.203423617822\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 3331.302909469469,\n      \"key_2\": 9056\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a191bfc9-eac0-4f65-b5c4-29ccc7a1f307",
+              "name": "The API Key is missing, revoked, or otherwise not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "observation",
+                    "vitalSigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"message\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a95e2833-46d5-4234-af45-1a3bd26d8695",
+          "name": "Get procedures",
+          "request": {
+            "name": "Get procedures",
+            "description": {
+              "content": "Retrieves procedure records for the patient. Confirmed endpoint; response modeled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "patient",
+                "procedure"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6565241e-2d25-4a44-8218-fba0f2169c84",
+              "name": "Procedure list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "procedure"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"string\",\n  \"entry\": [\n    {\n      \"key_0\": 9658,\n      \"key_1\": 8517.203423617822\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 3331.302909469469,\n      \"key_2\": 9056\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5071d3f-0a00-4276-a6fc-645501e6dd1d",
+              "name": "The API Key is missing, revoked, or otherwise not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "procedure"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"message\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "97c4f683-b55f-44e3-bed9-37591462af65",
+          "name": "Get smoking status",
+          "request": {
+            "name": "Get smoking status",
+            "description": {
+              "content": "Retrieves the patient's smoking status observation. Confirmed endpoint; response modeled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "patient",
+                "smokingStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fd565fa4-a959-48aa-b939-bd0cd4d614f2",
+              "name": "Smoking status observation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "smokingStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"string\",\n  \"entry\": [\n    {\n      \"key_0\": 9658,\n      \"key_1\": 8517.203423617822\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 3331.302909469469,\n      \"key_2\": 9056\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "763809bb-ca5f-4915-a87d-c3d5ee37f93d",
+              "name": "The API Key is missing, revoked, or otherwise not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient",
+                    "smokingStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"message\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tebra.com/clinical/v1/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "92fc327d-b1e4-4691-8229-6e810ddb305c",
+    "name": "Tebra Data Clinical API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read-only REST access to a patient's clinical health information held in the Tebra (formerly Kareo + PatientPop) platform. This is Tebra's ONC / 21st Century Cures Act \"patient access\" API surface (published under tebra.com/macra), exposing USCDI-aligned clinical resources for a single authenticated patient. Every request is authenticated with an API Key passed in the `X-Api-Key` header; the key is generated by the patient from the Tebra Patient Portal under My Account > API Access Key. Connections must use HTTPS (TLS) and callers are asked to limit connection frequency to what their use case requires.\nThe resource paths and the X-Api-Key authentication in this document are confirmed from Tebra's official \"General API Documentation\" (Oct 2023). The request query parameters and response schemas below are MODELED to reflect typical USCDI / FHIR-flavored patient-access payloads and should be verified against the current Tebra API documentation before production use.\n\nContact Support:\n Name: Tebra",
+      "type": "text/plain"
+    }
+  }
+}

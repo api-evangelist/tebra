@@ -1,0 +1,26 @@
+generated: '2026-08-14'
+method: searched
+source: https://www.tebra.com/wp-content/uploads/2025/05/Tebra-FHIR-API-User-Guide.pdf
+description: >-
+  Tebra documents a developer-portal sandbox for the FHIR API only; no
+  sandbox/test-mode surface is documented for the SOAP Practice Management API
+  or the (currently unreachable) Clinical Data REST API.
+sandbox:
+  api: Tebra FHIR API
+  name: FHIR My Sandbox
+  evidence: >-
+    FHIR API User Guide, "Developer" section: "In the developer account,
+    developers can also access and use a FHIR My Sandbox to conduct testing
+    of their application."
+  access: >-
+    Available inside the developer account after registering at
+    https://fhir.prd.cloud.tebra.com/appsphere/portal/#/login (Sign Up ->
+    Developer Portal -> My Sandbox). A "Manage OIDC Sandbox Settings" control
+    is visible on the Developer Portal dashboard screenshot in the guide.
+  test_credentials: not published (no test client_id/secret, test patient IDs, or fixture data documented in the guide)
+  fixture_tooling: not published
+notes: >-
+  Tebra's guide does not publish concrete sandbox test values (client IDs,
+  test patients, canned fixtures) - only that a sandbox exists and is reached
+  through the same appSphere developer portal used for production app
+  registration.

@@ -1,0 +1,137 @@
+generated: '2026-08-14'
+method: probed
+source: live HTTP probes of every apis.yml host, every OpenAPI servers[] host, and the docs/console host
+hosts:
+- host: www.tebra.com
+  probes:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /openapi.json
+    status: 404
+  - path: /graphql
+    status: 404
+- host: helpme.tebra.com
+  probes:
+  - path: /.well-known/security.txt
+    status: 200
+    file: well-known/tebra-security.txt
+    note: >-
+      Real document, but it is NICE's own security-disclosure contact
+      (ExpertSecurity@nice.com, expert-help.nice.com), not Tebra's - helpme.tebra.com
+      is a Tebra-branded instance of a third-party (NICE) customer-support/help-center
+      platform. Judged by content, not host, per the ownership-check discipline: this
+      is NOT credited as Tebra's own vulnerability-disclosure program.
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /openapi.json
+    status: 404
+  - path: /graphql
+    status: 404
+- host: webservice.kareo.com
+  note: SOAP host (CNAME to bridge.cloud.tebra.com); no REST/.well-known surface expected.
+  probes:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /openapi.json
+    status: 404
+  - path: /graphql
+    status: 404
+- host: fhir.prd.cloud.tebra.com
+  note: >-
+    SmileCDR-hosted FHIR server. Every probed path (including real
+    well-known/API paths) returns HTTP 200 with an EMPTY body (content-length 0,
+    no content-type) - a soft-200 catch-all, not a real document. Treated as a
+    miss on every path per the "a 200 that returns no real document is not a
+    hit" rule. The root path (/) does render a real HTML shell ("Smile CDR
+    Admin Web Console" login page), confirming the pattern.
+  probes:
+  - path: /.well-known/security.txt
+    status: 200
+    note: empty body - not a real document
+  - path: /.well-known/openid-configuration
+    status: 200
+    note: empty body - not a real document
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    note: empty body - not a real document
+  - path: /.well-known/smart-configuration
+    status: 200
+    note: empty body - not a real document (SMART config was expected here given the FHIR surface; absent)
+  - path: /.well-known/api-catalog
+    status: 200
+    note: empty body - not a real document
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    note: empty body - not a real document
+  - path: /.well-known/agent-card.json
+    status: 200
+    note: empty body - not a real document
+  - path: /.well-known/agent.json
+    status: 200
+    note: empty body - not a real document
+  - path: /llms.txt
+    status: 200
+    note: empty body - not a real document
+  - path: /openapi.json
+    status: 200
+    note: empty body - not a real document
+  - path: /fhir/metadata
+    status: 200
+    note: empty body - not a real FHIR CapabilityStatement despite the 200
+  - path: /api/fhir/metadata
+    status: 200
+    note: empty body - not a real FHIR CapabilityStatement despite the 200
+  - path: /graphql
+    status: 200
+    note: empty body - not a real document
+- host: api.tebra.com
+  note: >-
+    Documented Clinical Data API host (openapi/tebra-clinical-api-openapi.yml
+    servers[]) fails DNS resolution (NXDOMAIN) - no probe possible.
+  probes: []
+notes: >-
+  No genuine well-known document was found on any Tebra-controlled host. The
+  one 200 carrying real content (helpme.tebra.com/.well-known/security.txt)
+  belongs to the underlying NICE help-desk platform, not Tebra's own security
+  program, so no WellKnown or SecurityTxt canonical pointer is emitted in
+  apis.yml for it.

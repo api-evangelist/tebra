@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tebra Data Clinical Patient API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Patient",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tebra.com/clinical/v1/api/patient"
+          },
+          "docs": "Retrieves the demographic record for the patient associated with the supplied API Key. Confirmed endpoint; response fields are modeled."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,18 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Tebra Documents API
+  version: 1.0.0
+extends: openapi/tebra-documents-api-openapi.yml
+x-generated: '2026-08-14'
+x-method: generated
+x-source: live DNS probe of servers[] host, 2026-08-14
+x-note: >-
+  Same finding as overlays/tebra-clinical-api-overlay.yaml: the documented
+  production host (api.tebra.com) fails DNS resolution (NXDOMAIN) as of
+  2026-08-14. See lifecycle/tebra-lifecycle.yml.
+actions:
+- target: $.servers[0]
+  description: Flag the documented host as currently unreachable rather than silently leaving the gap unrecorded.
+  update:
+    x-api-evangelist-dns-status: NXDOMAIN
+    x-api-evangelist-probed: '2026-08-14'

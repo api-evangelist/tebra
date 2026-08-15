@@ -1,11 +1,11 @@
-generated: '2026-07-11'
+generated: '2026-08-14'
 method: probed
 source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
 hosts:
 - host: www.tebra.com
   https: true
   tls_version: TLSv1.3
-  cert_expires: Aug 31 01:26:34 2026 GMT
+  cert_expires: Oct 29 01:46:25 2026 GMT
   hsts: false
 - host: helpme.tebra.com
   https: true
@@ -18,28 +18,45 @@ hosts:
   tls_version: TLSv1.3
   cert_expires: Feb  9 23:59:59 2027 GMT
   hsts: null
+- host: fhir.prd.cloud.tebra.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 22 07:51:50 2026 GMT
+  hsts: true
+  hsts_max_age: 15724800
+  note: >-
+    Manually probed (openssl s_client + curl, 2026-08-14); not covered by the
+    automated 3-host cap. Live SMART on FHIR host (tebra:tebra-fhir-api).
+- host: api.tebra.com
+  https: null
+  dns_status: NXDOMAIN
+  note: >-
+    Host documented as the Clinical Data API base in Tebra's own Oct 2023
+    "General API Documentation" PDF and in this repo's openapi/ servers[], but
+    fails to resolve on public DNS resolvers (system, 8.8.8.8, 1.1.1.1) as of
+    2026-08-14. See lifecycle/tebra-lifecycle.yml.
 domains:
 - domain: tebra.com
   dnssec: false
   caa:
-  - 0 issuewild "comodoca.com"
-  - 0 issuewild "digicert.com; cansignhttpexchanges=yes"
   - 0 issuewild "letsencrypt.org"
   - 0 issuewild "pki.goog; cansignhttpexchanges=yes"
   - 0 issuewild "ssl.com"
   - 0 iodef "mailto:netops-team@kareo.com"
+  - 0 issue "amazon.com"
+  - 0 issue "comodoca.com"
   spf: true
   dmarc: true
   dmarc_policy: reject
 - domain: kareo.com
   dnssec: false
   caa:
+  - 0 issuewild "pki.goog; cansignhttpexchanges=yes"
   - 0 issuewild "ssl.com"
   - 0 iodef "mailto:netops-team@kareo.com"
   - 0 issue "amazon.com"
   - 0 issue "comodoca.com"
   - 0 issue "digicert.com; cansignhttpexchanges=yes"
-  - 0 issue "letsencrypt.org"
   spf: true
   dmarc: true
   dmarc_policy: quarantine

@@ -1,0 +1,60 @@
+generated: '2026-08-14'
+method: searched
+source:
+- https://www.tebra.com/wp-content/uploads/2025/05/Tebra-FHIR-API-User-Guide.pdf
+- https://www.tebra.com/wp-content/uploads/2023/10/General_API_Documentation-Tebra.pdf
+- https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
+description: >-
+  Tebra publishes no dedicated API changelog, deprecation policy, or public
+  API status page. Version/lifecycle detail below is derived from what each
+  surface's own guide states about itself, plus a live DNS/HTTP probe run
+  2026-08-14.
+apis:
+- name: Tebra FHIR API
+  status: active
+  version: '1.0'
+  spec_basis: HL7 FHIR R4 / US Core Implementation Guide STU3 Release 3.1.1
+  first_documented: '2025-05'
+  evidence: >-
+    "API User Guide, Version 1.0" cover page states "Updated: May 2025".
+    Live-probed 2026-08-14: 401 on unauthenticated resource GET, 302 on
+    /smartauth/oauth/authorize, 401 on POST /smartauth/oauth/token - a
+    reachable, functioning deployment.
+  deprecation_policy: none published
+- name: Tebra Clinical Data API (REST, X-Api-Key)
+  status: unclear - documented host unreachable
+  version: '1.0'
+  spec_basis: >-
+    Custom REST/JSON surface, USCDI-aligned but not formally FHIR; described
+    as a "Tebra public Application Programming Interface" in the API Terms of
+    Use.
+  first_documented: '2023-10'
+  evidence: >-
+    "API User Guide, Version 1.0" cover/copyright reads "© 2023 Tebra
+    Technologies, Inc." The documented production host
+    (https://api.tebra.com/clinical/v1/api) - stated verbatim in the request
+    URLs on pages 13-17 of that PDF - returns NXDOMAIN on the system resolver
+    and on 8.8.8.8/1.1.1.1 as probed on 2026-08-14. Tebra has not published a
+    formal retirement notice for this surface; its absence from DNS, next to a
+    functioning FHIR API covering an overlapping USCDI resource set published
+    18 months later (May 2025), is consistent with (but not confirmed as) a
+    quiet migration from the 2023 REST Clinical Data API to the FHIR API.
+  deprecation_policy: none published; host appears dead in practice
+- name: Tebra SOAP Practice Management API (former Kareo Integration API)
+  status: active
+  version: '2.1'
+  spec_basis: SOAP 1.1/1.2, WSDL-defined
+  evidence: >-
+    Live WSDL confirmed at
+    https://webservice.kareo.com/services/soap/2.1/KareoServices.svc?wsdl
+    (version pinned in the path itself: /soap/2.1/).
+  deprecation_policy: none published
+status_page:
+  url: https://status.tebra.com
+  provider: Atlassian Statuspage (also reachable at https://tebra.statuspage.io)
+  api: https://status.tebra.com/api/v2/status.json
+  probed: '2026-08-14'
+  evidence: 'HTTP 200, title "Tebra Status", indicator "none" / "All Systems Operational" via the public status API.'
+notes: >-
+  No RFC 8594 Sunset/Deprecation response headers or a written deprecation
+  policy are documented on any API surface.

@@ -1,0 +1,52 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Tebra FHIR API
+  version: 1.0.0
+extends: openapi/tebra-fhir-api-openapi.yml
+x-generated: '2026-08-14'
+x-method: generated
+x-source: >-
+  https://www.tebra.com/wp-content/uploads/2025/05/Tebra-FHIR-API-User-Guide.pdf
+x-note: >-
+  The Tebra FHIR API User Guide documents request URLs, required search
+  parameters, and resource coverage, but does not publish an OpenAPI/Swagger
+  contract, response schemas, or an enumerated OAuth scope catalog. This
+  overlay records what API Evangelist added on top of the confirmed request
+  shapes: standard FHIR R4 error/response envelopes, error-code mapping, and a
+  flag on the derived (non-verbatim) OAuth scope list.
+actions:
+- target: $.components.responses
+  description: >-
+    Map Tebra's documented "Common Error Codes" table (Client Errors 400/401/403/404/408/429;
+    Server Errors 500/502/503/504) onto standard FHIR OperationOutcome response
+    envelopes; the guide lists the codes but not a JSON schema for the error body.
+  update:
+    NotFound:
+      description: 'Not Found - the requested resource could not be found.'
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    RequestTimeout:
+      description: 'Request Timeout - the server timed out waiting for the request.'
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+- target: $.info
+  description: Record provenance of this generated contract for downstream consumers.
+  update:
+    x-api-evangelist-source: https://www.tebra.com/wp-content/uploads/2025/05/Tebra-FHIR-API-User-Guide.pdf
+    x-api-evangelist-generated: '2026-08-14'
+    x-api-evangelist-verified-live: true
+    x-api-evangelist-verification-note: >-
+      Probed 2026-08-14: GET on FHIR resources returns 401 without a token,
+      GET /smartauth/oauth/authorize returns 302, POST /smartauth/oauth/token
+      returns 401 - consistent with a real, reachable SMART on FHIR deployment.
+- target: $.components.securitySchemes.smartOnFhirAuthCode
+  description: >-
+    Flag that the individual SMART scope strings are API Evangelist's
+    derivation (standard SMART v1 syntax applied to Tebra's documented
+    resource list), not copied verbatim from a Tebra-published scope catalog.
+  update:
+    x-api-evangelist-scopes-derived: true

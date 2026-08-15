@@ -1,0 +1,8 @@
+generated: '2026-08-14'
+method: generated
+source: openapi/tebra-fhir-api-openapi.yml
+skills:
+- file: skills/tebra-read-patient-clinical-data.md
+  name: tebra-read-patient-clinical-data
+  api: tebra:tebra-fhir-api
+  description: Read a patient's USCDI-aligned clinical record from the Tebra FHIR API using SMART on FHIR OAuth 2.0.

@@ -1,11 +1,19 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/tebra-clinical-openapi.yml
+generated: '2026-08-14'
+method: searched
+source: openapi/tebra-clinical-api-openapi.yml, openapi/tebra-documents-api-openapi.yml, openapi/tebra-fhir-api-openapi.yml,
+  openapi/tebra-patient-api-openapi.yml
+docs:
+- https://www.tebra.com/wp-content/uploads/2025/05/Tebra-FHIR-API-User-Guide.pdf
+- https://www.tebra.com/wp-content/uploads/2023/10/General_API_Documentation-Tebra.pdf
 summary:
   types:
   - apiKey
+  - oauth2
   api_key_in:
   - header
+  oauth2_flows:
+  - authorizationCode
+  - clientCredentials
 schemes:
 - name: apiKeyAuth
   type: apiKey
@@ -14,4 +22,33 @@ schemes:
   description: Patient-generated API Key from the Tebra Patient Portal (My Account > API Access
     Key). A missing, revoked, or invalid key returns 401 Unauthorized.
   sources:
-  - openapi/tebra-clinical-openapi.yml
+  - openapi/tebra-clinical-api-openapi.yml
+  - openapi/tebra-documents-api-openapi.yml
+  - openapi/tebra-patient-api-openapi.yml
+- name: smartOnFhirAuthCode
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://fhir.prd.cloud.tebra.com/smartauth/oauth/authorize
+    tokenUrl: https://fhir.prd.cloud.tebra.com/smartauth/oauth/token
+    scopes: 24
+  description: SMART on FHIR 3-legged OAuth 2.0 authorization-code flow for user-facing (patient/provider)
+    applications. Authorization/token URLs are confirmed verbatim from the Tebra FHIR API User
+    Guide. The scope list below is DERIVED, not verbatim - Tebra's guide instructs developers
+    to "enter the SMART scopes required" without publishing an enumerated list, so these are
+    the standard SMART v1 `patient/<Resour
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml
+- name: smartOnFhirClientCredentials
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://fhir.prd.cloud.tebra.com/smartauth/oauth/token
+    scopes: 3
+  description: SMART on FHIR 2-legged OAuth 2.0 client-credentials flow for backend services
+    applications (no end-user present). Token endpoint is confirmed verbatim from the Tebra
+    FHIR API User Guide; Tebra currently supports only the Client Credentials workflow (not
+    JWKS-based backend auth). Scope strings below are DERIVED (`system/<Resource>.read`, standard
+    SMART v1 syntax), not verbatim - see note above.
+  sources:
+  - openapi/tebra-fhir-api-openapi.yml

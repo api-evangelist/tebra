@@ -1,5 +1,10 @@
 aid: tebra
 url: https://raw.githubusercontent.com/api-evangelist/tebra/refs/heads/main/apis.yml
+x-enrichment:
+  date: '2026-08-14'
+  status: enriched
+  artifacts_added: 20
+  pass: local-v1
 name: Tebra
 kind: company
 description: >-
@@ -7,14 +12,18 @@ description: >-
   system for independent medical practices - EHR, practice management, medical
   billing, patient engagement, and practice growth. Tebra was formed from the
   2021 merger of Kareo (practice management and billing) and PatientPop
-  (practice growth), and its developer surface reflects that lineage. Two
+  (practice growth), and its developer surface reflects that lineage. Three
   documented API surfaces exist. The Tebra SOAP Practice Management API - the
   former Kareo Integration API, still served at webservice.kareo.com - covers
   patients, appointments, providers, practices, charges, encounters, payments,
   and transactions, and is partner / administrator gated. The Tebra Clinical
-  Data API is a REST patient-access API published under tebra.com/macra (ONC /
-  21st Century Cures Act), exposing USCDI clinical data with an API Key the
-  patient generates from the Tebra Patient Portal.
+  Data API is a REST patient-access API documented under tebra.com/macra (ONC /
+  21st Century Cures Act) with an API Key the patient generates from the Tebra
+  Patient Portal; its documented host (api.tebra.com) no longer resolves in DNS
+  as of this review. Tebra has since published a SMART on FHIR API (R4, US Core
+  STU3 3.1.1, USCDI v1) at fhir.prd.cloud.tebra.com, built on the SmileCDR
+  platform, offering no-charge patient read (GET) access to USCDI clinical
+  resources over 2-legged or 3-legged OAuth 2.0.
 accessModel:
   pricing: paid
   onboarding: self-serve
@@ -38,7 +47,7 @@ tags:
 - Kareo
 - PatientPop
 created: '2026-07-10'
-modified: '2026-07-10'
+modified: '2026-08-14'
 specificationVersion: '0.19'
 apis:
 - aid: tebra:tebra-patients-api
@@ -139,9 +148,16 @@ apis:
     and GetThrottles. Operation names confirmed from the live WSDL.
 - aid: tebra:tebra-clinical-api
   name: Tebra Clinical API
-  description: USCDI-aligned clinical data classes for the authenticated patient.
+  description: >-
+    USCDI-aligned clinical data classes for the authenticated patient. Base host
+    (api.tebra.com) is the host documented in Tebra's own "General API
+    Documentation" (Oct 2023) PDF and matches this spec's servers[], but as of
+    2026-08-14 it returns NXDOMAIN on public DNS resolvers (8.8.8.8, 1.1.1.1,
+    system resolver) - the documented host no longer resolves. See lifecycle/
+    for detail; Tebra's newer FHIR API (tebra:tebra-fhir-api) covers most of the
+    same USCDI resource set and is live.
   humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
-  baseURL: https://webservice.kareo.com/services/soap/2.1
+  baseURL: https://api.tebra.com/clinical/v1/api
   tags:
   - Clinical
   properties:
@@ -153,11 +169,17 @@ apis:
     url: https://www.tebra.com/wp-content/uploads/2023/10/General_API_Documentation-Tebra.pdf
   - type: PostmanCollection
     url: collections/tebra-clinical.postman_collection.json
+  - type: Overlay
+    url: overlays/tebra-clinical-api-overlay.yaml
 - aid: tebra:tebra-documents-api
   name: Tebra Documents API
-  description: Binary clinical summary documents (e.g. C-CDA).
+  description: >-
+    Binary clinical summary documents (e.g. C-CDA). Base host (api.tebra.com)
+    matches the Oct 2023 "General API Documentation" PDF and this spec's
+    servers[], but as of 2026-08-14 it returns NXDOMAIN on public DNS resolvers
+    - the documented host no longer resolves. See lifecycle/ for detail.
   humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
-  baseURL: https://webservice.kareo.com/services/soap/2.1
+  baseURL: https://api.tebra.com/clinical/v1/api
   tags:
   - Documents
   properties:
@@ -169,11 +191,17 @@ apis:
     url: https://www.tebra.com/wp-content/uploads/2023/10/General_API_Documentation-Tebra.pdf
   - type: PostmanCollection
     url: collections/tebra-clinical.postman_collection.json
+  - type: Overlay
+    url: overlays/tebra-documents-api-overlay.yaml
 - aid: tebra:tebra-patient-api
   name: Tebra Patient API
-  description: Core patient demographic record.
+  description: >-
+    Core patient demographic record. Base host (api.tebra.com) matches the Oct
+    2023 "General API Documentation" PDF and this spec's servers[], but as of
+    2026-08-14 it returns NXDOMAIN on public DNS resolvers - the documented host
+    no longer resolves. See lifecycle/ for detail.
   humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
-  baseURL: https://webservice.kareo.com/services/soap/2.1
+  baseURL: https://api.tebra.com/clinical/v1/api
   tags:
   - Patient
   properties:
@@ -185,10 +213,56 @@ apis:
     url: https://www.tebra.com/wp-content/uploads/2023/10/General_API_Documentation-Tebra.pdf
   - type: PostmanCollection
     url: collections/tebra-clinical.postman_collection.json
+  - type: Overlay
+    url: overlays/tebra-patient-api-overlay.yaml
+- aid: tebra:tebra-fhir-api
+  name: Tebra FHIR API
+  description: >-
+    SMART on FHIR (HL7 FHIR R4) patient-access API built on US Core
+    Implementation Guide STU3 Release 3.1.1, satisfying USCDI v1 / ONC 21st
+    Century Cures Act information-blocking requirements. Hosted on the SmileCDR
+    FHIR platform under a Tebra/SmileCDR partnership. Confirmed live (401 on
+    unauthenticated GET, 302 on /smartauth/oauth/authorize, probed 2026-08-14)
+    covering Patient, AllergyIntolerance, CarePlan, CareTeam, Condition,
+    DiagnosticReport, DocumentReference, Encounter, Goal, Immunization, Device
+    (implantable), Observation (vitals/labs/smoking status), Location,
+    Medication, MedicationRequest, Organization, Practitioner,
+    PractitionerRole, Procedure, and Provenance - each Search + Read. No fee or
+    contract is required for patient-facing read (GET) access to USCDIv1 data;
+    clinician-focused and bulk-export backend applications require practice
+    onboarding and additional fees.
+  humanURL: https://www.tebra.com/macra
+  baseURL: https://fhir.prd.cloud.tebra.com/fhir-request
+  tags:
+  - Clinical
+  - FHIR
+  - SMART on FHIR
+  - USCDI
+  properties:
+  - type: OpenAPI
+    url: openapi/tebra-fhir-api-openapi.yml
+  - type: Documentation
+    url: https://www.tebra.com/macra
+  - type: APIReference
+    url: https://www.tebra.com/wp-content/uploads/2025/05/Tebra-FHIR-API-User-Guide.pdf
+  - type: DeveloperPortal
+    url: https://fhir.prd.cloud.tebra.com/appsphere/portal/#/login
+  - type: Sandbox
+    url: sandbox/tebra-sandbox.yml
+  - type: Overlay
+    url: overlays/tebra-fhir-api-overlay.yaml
+  - type: MCPServer
+    url: mcp/tebra-mcp.yml
+  - type: AgentSkill
+    url: skills/tebra-read-patient-clinical-data.md
 common:
+- type: OAuthScopes
+  url: scopes/tebra-scopes.yml
 - type: AgenticAccess
   url: agentic-access/tebra-agentic-access.yml
 - type: TrustCenter
+  url: security/tebra-trust-center.yml
+- type: Compliance
   url: security/tebra-trust-center.yml
 - type: DomainSecurity
   url: security/tebra-domain-security.yml
@@ -200,12 +274,38 @@ common:
   url: https://www.tebra.com
 - type: Documentation
   url: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
+- type: Support
+  url: https://helpme.tebra.com
+- type: Blog
+  url: https://www.tebra.com/theintake
+- type: Pricing
+  url: https://www.tebra.com/pricing
+- type: TermsOfService
+  url: https://www.tebra.com/tebra-terms-of-service
+- type: PrivacyPolicy
+  url: https://www.tebra.com/privacy-policy
+- type: StatusPage
+  url: https://status.tebra.com
 - type: Plans
   url: plans/tebra-plans-pricing.yml
 - type: RateLimits
   url: rate-limits/tebra-rate-limits.yml
 - type: FinOps
   url: finops/tebra-finops.yml
+- type: Conformance
+  url: conformance/tebra-conformance.yml
+- type: Lifecycle
+  url: lifecycle/tebra-lifecycle.yml
+- type: ErrorCatalog
+  url: errors/tebra-problem-types.yml
+- type: Conventions
+  url: conventions/tebra-conventions.yml
+- type: DataModel
+  url: data-model/tebra-data-model.yml
+- type: LLMsTxt
+  url: llms/tebra-llms.txt
+- type: Packages
+  url: packages/tebra-packages.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

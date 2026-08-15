@@ -1,0 +1,75 @@
+generated: '2026-08-14'
+method: searched
+source:
+- https://www.tebra.com/wp-content/uploads/2025/05/Tebra-FHIR-API-User-Guide.pdf
+- https://www.tebra.com/wp-content/uploads/2023/10/General_API_Documentation-Tebra.pdf
+- https://www.tebra.com/security
+checks:
+- id: fhir
+  conforms: true
+  version: R4
+  evidence: >-
+    Tebra FHIR API User Guide states "The FHIR APIs are based on the HL7 FHIR
+    US Core Implementation Guide STU3 Release 3.1.1" and documents FHIR R4
+    resource/search-parameter shapes for 19 resource types. Live-probed
+    2026-08-14 (401 on unauthenticated GET).
+- id: us-core
+  conforms: true
+  version: STU3 3.1.1
+  evidence: FHIR API User Guide, "Introduction" section, links HL7 FHIR US Core Implementation Guide STU3 Release 3.1.1.
+- id: uscdi
+  conforms: true
+  version: v1
+  evidence: >-
+    FHIR API User Guide states the FHIR APIs are "designed to satisfy the
+    United States Core Data for Interoperability (USCDI, version 1)
+    requirements set forth by the Office of the National Coordinator (ONC)."
+- id: onc-cures-act
+  conforms: true
+  evidence: >-
+    Both the Clinical Data API and the FHIR API are published to satisfy 21st
+    Century Cures Act / ONC information-blocking patient-access requirements;
+    the Clinical Data API PDF and www.tebra.com/macra both cite MACRA/ONC.
+- id: oauth2
+  conforms: true
+  evidence: >-
+    FHIR API supports SMART on FHIR OAuth 2.0 - 3-legged authorization-code
+    for user-facing apps, 2-legged client-credentials for backend apps.
+    Confirmed authorize/token endpoints, live-probed 2026-08-14.
+- id: smart-on-fhir
+  conforms: true
+  evidence: 'FHIR API User Guide, "System Requirements": "Support SMART on FHIR authentication framework."'
+- id: openid-connect
+  conforms: partial
+  evidence: >-
+    The derived SMART scope list includes `openid`/`fhirUser` claims (standard
+    SMART practice), but no dedicated OIDC discovery document was found -
+    /.well-known/openid-configuration returns an empty 200 on
+    fhir.prd.cloud.tebra.com (see well-known/tebra-well-known.yml), not a real
+    discovery document.
+- id: rfc9457
+  conforms: false
+  evidence: >-
+    FHIR error responses are standard FHIR OperationOutcome bodies
+    (resourceType/issue[]), not RFC 9457 application/problem+json. SOAP faults
+    use the SOAP 1.1/1.2 fault envelope. Neither surface publishes
+    application/problem+json.
+- id: pagination
+  conforms: partial
+  evidence: >-
+    FHIR searchset Bundles carry standard FHIR paging (Bundle.link
+    next/self/previous per the FHIR R4 spec), inherited from the platform, not
+    separately documented by Tebra. The Clinical Data API and SOAP API
+    document no pagination parameters at all (single-patient / small result
+    sets).
+- id: idempotency
+  conforms: false
+  evidence: >-
+    No idempotency-key header or replay-safety mechanism is documented on any
+    of the three API surfaces (SOAP, Clinical Data REST, FHIR).
+- id: hipaa
+  conforms: true
+  evidence: 'https://www.tebra.com/security cites HIPAA compliance (see security/tebra-trust-center.yml).'
+- id: pci-dss
+  conforms: true
+  evidence: 'https://www.tebra.com/security cites PCI DSS compliance (see security/tebra-trust-center.yml); applies to payment processing, not the clinical APIs.'

@@ -1,0 +1,170 @@
+{
+  "item": [
+    {
+      "id": "c9d2c9ba-017a-44ef-8ec7-ad639261e195",
+      "name": "Patient",
+      "description": {
+        "content": "Core patient demographic record.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e52d3f3a-3e5f-4359-82ed-99c1db9fe463",
+          "name": "Get patient",
+          "request": {
+            "name": "Get patient",
+            "description": {
+              "content": "Retrieves the demographic record for the patient associated with the supplied API Key. Confirmed endpoint; response fields are modeled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "patient"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "abded966-16da-4e1e-9732-bdc962542693",
+              "name": "Patient record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"dateOfBirth\": \"1991-06-13\",\n  \"gender\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd1b8d2d-e979-498e-8674-f43e91c7aa0a",
+              "name": "The API Key is missing, revoked, or otherwise not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patient"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"message\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tebra.com/clinical/v1/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f8dfdbaf-700a-4ee4-8918-c8f830d70db8",
+    "name": "Tebra Data Clinical Patient API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read-only REST access to a patient's clinical health information held in the Tebra (formerly Kareo + PatientPop) platform. This is Tebra's ONC / 21st Century Cures Act \"patient access\" API surface (published under tebra.com/macra), exposing USCDI-aligned clinical resources for a single authenticated patient. Every request is authenticated with an API Key passed in the `X-Api-Key` header; the key is generated by the patient from the Tebra Patient Portal under My Account > API Access Key. Connections must use HTTPS (TLS) and callers are asked to limit connection frequency to what their use case requires.\nThe resource paths and the X-Api-Key authentication in this document are confirmed from Tebra's official \"General API Documentation\" (Oct 2023). The request query parameters and response schemas below are MODELED to reflect typical USCDI / FHIR-flavored patient-access payloads and should be verified against the current Tebra API documentation before production use.\n\nContact Support:\n Name: Tebra",
+      "type": "text/plain"
+    }
+  }
+}

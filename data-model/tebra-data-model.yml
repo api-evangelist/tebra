@@ -1,0 +1,135 @@
+generated: '2026-08-14'
+method: derived
+source:
+- openapi/tebra-fhir-api-openapi.yml
+- openapi/tebra-clinical-api-openapi.yml
+- openapi/tebra-documents-api-openapi.yml
+- openapi/tebra-patient-api-openapi.yml
+description: >-
+  Entity graph derived from the FHIR API's US Core resource references (each
+  clinical resource carries a `patient` search parameter binding it to
+  Patient) plus the smaller Clinical Data REST API's implicit single-patient
+  scope. This is a reference/search-parameter graph, not a formal FHIR
+  compartment definition.
+entities:
+- name: Patient
+  source: FHIR API (US Core Patient Profile) + Clinical Data REST API (/patient)
+- name: AllergyIntolerance
+  source: FHIR API
+- name: CarePlan
+  source: FHIR API
+- name: CareTeam
+  source: FHIR API
+- name: Condition
+  source: FHIR API
+- name: DiagnosticReport
+  source: FHIR API
+- name: DocumentReference
+  source: FHIR API
+- name: Encounter
+  source: FHIR API + Clinical Data REST API (/patient/encounter)
+- name: Goal
+  source: FHIR API
+- name: Immunization
+  source: FHIR API
+- name: Device
+  source: FHIR API (implantable device / UDI)
+- name: Observation
+  source: FHIR API (vitals, labs, smoking status)
+- name: Location
+  source: FHIR API
+- name: Medication
+  source: FHIR API
+- name: MedicationRequest
+  source: FHIR API
+- name: Organization
+  source: FHIR API
+- name: Practitioner
+  source: FHIR API
+- name: PractitionerRole
+  source: FHIR API
+- name: Procedure
+  source: FHIR API
+- name: Provenance
+  source: FHIR API
+relationships:
+- from: AllergyIntolerance
+  to: Patient
+  type: belongs_to
+  via: patient (required search parameter)
+- from: CarePlan
+  to: Patient
+  type: belongs_to
+  via: patient (required search parameter)
+- from: CareTeam
+  to: Patient
+  type: belongs_to
+  via: patient (required search parameter)
+- from: Condition
+  to: Patient
+  type: belongs_to
+  via: patient (required search parameter)
+- from: DiagnosticReport
+  to: Patient
+  type: belongs_to
+  via: patient (required search parameter)
+- from: DocumentReference
+  to: Patient
+  type: belongs_to
+  via: patient (required search parameter)
+- from: Encounter
+  to: Patient
+  type: belongs_to
+  via: patient (required search parameter)
+- from: Encounter
+  to: Location
+  type: has_one
+  via: encounter.location (Clinical Data REST API response example)
+- from: Encounter
+  to: Practitioner
+  type: has_many
+  via: encounter.participant (Clinical Data REST API response example)
+- from: Encounter
+  to: Condition
+  type: has_one
+  via: encounter.diagnosis.condition (Clinical Data REST API response example)
+- from: Goal
+  to: Patient
+  type: belongs_to
+  via: patient (required search parameter)
+- from: Immunization
+  to: Patient
+  type: belongs_to
+  via: patient (required search parameter)
+- from: Device
+  to: Patient
+  type: belongs_to
+  via: patient (required search parameter)
+- from: Observation
+  to: Patient
+  type: belongs_to
+  via: patient (required search parameter)
+- from: MedicationRequest
+  to: Patient
+  type: belongs_to
+  via: patient (required search parameter)
+- from: MedicationRequest
+  to: Medication
+  type: has_one
+  via: implicit MedicationRequest -> Medication reference (US Core MedicationRequest Profile)
+- from: Procedure
+  to: Patient
+  type: belongs_to
+  via: patient (required search parameter)
+- from: Provenance
+  to: Patient
+  type: belongs_to
+  via: 'patient + _revinclude=Provenance'
+- from: PractitionerRole
+  to: Practitioner
+  type: has_one
+  via: practitioner (search parameter)
+- from: PractitionerRole
+  to: Organization
+  type: belongs_to
+  via: implicit US Core PractitionerRole Profile reference

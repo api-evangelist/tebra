@@ -1,0 +1,14 @@
+generated: '2026-08-14'
+method: searched
+source:
+- https://registry.npmjs.org (searched: tebra, tebra-api, tebra-sdk, kareo, kareo-api, python-tebra)
+- https://pypi.org (searched: tebra, tebra-api, tebra-sdk, kareo, kareo-api)
+- Tebra's own API Terms of Use / API User Guides and the API and Integration help page
+description: >-
+  No first-party Tebra client library was found on npm or PyPI, nor referenced
+  in any of Tebra's three published API guides (SOAP Integration API, Clinical
+  Data REST API, FHIR API). All three surfaces are documented as raw
+  SOAP/REST/FHIR HTTP calls; developers are expected to generate their own
+  client from the WSDL or call the REST/FHIR endpoints directly.
+package_count: 0
+packages: []

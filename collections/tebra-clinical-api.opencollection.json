@@ -1,0 +1,158 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tebra Data Clinical API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Clinical",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get medication allergies and intolerances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tebra.com/clinical/v1/api/patient/allergyIntolerance/medication"
+          },
+          "docs": "Retrieves allergy and intolerance records associated with the patient. Confirmed endpoint; response is modeled as a USCDI AllergyIntolerance list."
+        },
+        {
+          "info": {
+            "name": "Get care plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tebra.com/clinical/v1/api/patient/carePlan"
+          },
+          "docs": "Retrieves care plan entries for the patient. Confirmed endpoint; response modeled."
+        },
+        {
+          "info": {
+            "name": "Get problem list conditions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tebra.com/clinical/v1/api/patient/condition/problemList"
+          },
+          "docs": "Retrieves problem-list conditions for the patient. Confirmed endpoint; response modeled."
+        },
+        {
+          "info": {
+            "name": "Get implantable devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tebra.com/clinical/v1/api/patient/device"
+          },
+          "docs": "Retrieves device records associated with the patient. Confirmed endpoint; response modeled."
+        },
+        {
+          "info": {
+            "name": "Get diagnostic reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tebra.com/clinical/v1/api/patient/diagnosticReport"
+          },
+          "docs": "Retrieves diagnostic report records for the patient. Confirmed endpoint; response modeled."
+        },
+        {
+          "info": {
+            "name": "Get encounters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tebra.com/clinical/v1/api/patient/encounter"
+          },
+          "docs": "Retrieves encounter records associated with the patient. Confirmed endpoint; response modeled."
+        },
+        {
+          "info": {
+            "name": "Get goals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tebra.com/clinical/v1/api/patient/goal"
+          },
+          "docs": "Retrieves care goals for the patient. Confirmed endpoint; response modeled."
+        },
+        {
+          "info": {
+            "name": "Get immunizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tebra.com/clinical/v1/api/patient/immunization"
+          },
+          "docs": "Retrieves immunization records for the patient. Confirmed endpoint; response modeled."
+        },
+        {
+          "info": {
+            "name": "Get medications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tebra.com/clinical/v1/api/patient/medicationStatement"
+          },
+          "docs": "Retrieves medication statement records for the patient. Confirmed endpoint; response modeled."
+        },
+        {
+          "info": {
+            "name": "Get vital signs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tebra.com/clinical/v1/api/patient/observation/vitalSigns"
+          },
+          "docs": "Retrieves vital sign observations for the patient. Confirmed endpoint; response modeled."
+        },
+        {
+          "info": {
+            "name": "Get procedures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tebra.com/clinical/v1/api/patient/procedure"
+          },
+          "docs": "Retrieves procedure records for the patient. Confirmed endpoint; response modeled."
+        },
+        {
+          "info": {
+            "name": "Get smoking status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tebra.com/clinical/v1/api/patient/smokingStatus"
+          },
+          "docs": "Retrieves the patient's smoking status observation. Confirmed endpoint; response modeled."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

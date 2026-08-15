@@ -1,0 +1,111 @@
+generated: '2026-08-14'
+method: derived
+status: candidate
+source: openapi/tebra-fhir-api-openapi.yml
+description: >-
+  No official Tebra MCP server was found. Probed https://www.tebra.com/mcp
+  (404) and POSTed a tools/list JSON-RPC request to
+  https://fhir.prd.cloud.tebra.com/mcp (302 redirect to the SmileCDR SPA login
+  shell, not a real MCP response). This is a DERIVED candidate tool list
+  generated from the confirmed FHIR OpenAPI operations - a governance/adoption
+  starting point, not evidence Tebra ships an MCP server.
+deployment:
+  mode: none
+  auth: unknown
+  verified: derived
+tools:
+- name: getPatient
+  description: Retrieve a patient's demographic record.
+  operationId: getPatient
+  inputSchema:
+    id: string (required)
+    identifier: string
+    name: string
+- name: getAllergyIntolerance
+  description: Retrieve a patient's allergies/intolerances.
+  operationId: getAllergyIntolerance
+  inputSchema:
+    patient: string (required)
+- name: getCarePlan
+  description: Retrieve a patient's care plans.
+  operationId: getCarePlan
+  inputSchema:
+    patient: string (required)
+    category: string (required)
+- name: getCareTeam
+  description: Retrieve a patient's care team.
+  operationId: getCareTeam
+  inputSchema:
+    patient: string (required)
+    status: string (required)
+- name: getCondition
+  description: Retrieve a patient's problems/health concerns.
+  operationId: getCondition
+  inputSchema:
+    patient: string (required)
+- name: getDiagnosticReport
+  description: Retrieve lab/report DiagnosticReport results for a patient.
+  operationId: getDiagnosticReport
+  inputSchema:
+    patient: string (required)
+    category: string
+    code: string
+    date: string
+- name: getDocumentReference
+  description: Retrieve a patient's documents/clinical notes.
+  operationId: getDocumentReference
+  inputSchema:
+    patient: string (required)
+    id: string
+    category: string
+    type: string
+    date: string
+- name: getEncounter
+  description: Retrieve a patient's encounters.
+  operationId: getEncounter
+  inputSchema:
+    patient: string (required)
+    id: string
+    date: string
+- name: getGoal
+  description: Retrieve a patient's care goals.
+  operationId: getGoal
+  inputSchema:
+    patient: string (required)
+- name: getImmunization
+  description: Retrieve a patient's immunization history.
+  operationId: getImmunization
+  inputSchema:
+    patient: string (required)
+- name: getDevice
+  description: Retrieve a patient's implantable device/UDI records.
+  operationId: getDevice
+  inputSchema:
+    patient: string (required)
+- name: getObservation
+  description: Retrieve a patient's vitals, lab, and smoking-status observations.
+  operationId: getObservation
+  inputSchema:
+    patient: string (required)
+    code: string
+    category: string
+    date: string
+- name: getMedicationRequest
+  description: Retrieve a patient's medication history.
+  operationId: getMedicationRequest
+  inputSchema:
+    patient: string (required)
+    intent: string (required)
+    status: string
+- name: getProcedure
+  description: Retrieve a patient's procedures.
+  operationId: getProcedure
+  inputSchema:
+    patient: string (required)
+    date: string
+- name: getProvenance
+  description: Retrieve author/date provenance for a patient's EHI.
+  operationId: getProvenance
+  inputSchema:
+    patient: string
+    id: string

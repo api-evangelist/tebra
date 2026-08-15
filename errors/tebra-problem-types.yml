@@ -1,0 +1,76 @@
+generated: '2026-08-14'
+method: searched
+format: none
+source:
+- https://www.tebra.com/wp-content/uploads/2025/05/Tebra-FHIR-API-User-Guide.pdf
+- https://www.tebra.com/wp-content/uploads/2023/10/General_API_Documentation-Tebra.pdf
+- openapi/tebra-fhir-api-openapi.yml
+- openapi/tebra-clinical-api-openapi.yml
+description: >-
+  Neither Tebra API surface publishes RFC 9457 application/problem+json. The
+  FHIR API returns standard FHIR OperationOutcome bodies; the Clinical Data
+  REST API returns a small custom {status,message} JSON envelope; the SOAP
+  API returns SOAP faults. Codes and messages below are confirmed verbatim
+  from Tebra's own published error-code tables.
+surfaces:
+- surface: Tebra FHIR API
+  envelope: FHIR OperationOutcome (resourceType/issue[])
+  content_type: application/fhir+json
+  errors:
+  - code: 400
+    message: Bad Request
+    description: The server cannot process the request due to an apparent client error.
+  - code: 401
+    message: Unauthorized
+    description: The required authentication failed or was not provided.
+  - code: 403
+    message: Forbidden
+    description: A valid request was received but refused by the server; typically the caller lacks the necessary permissions for the specified resource.
+  - code: 404
+    message: Not Found
+    description: The requested resource could not be found.
+  - code: 408
+    message: Request Timeout
+    description: The server timed out waiting for the request.
+  - code: 429
+    message: Too Many Requests
+    description: Too many requests have been sent in a given time period.
+  - code: 500
+    message: Internal Server Error
+    description: A generic error message for an unexpected condition.
+  - code: 502
+    message: Bad Gateway
+    description: The gateway proxy server received an invalid response from the upstream server.
+  - code: 503
+    message: Service Unavailable
+    description: The server cannot handle the request, typically because it is overloaded or down for maintenance.
+  - code: 504
+    message: Gateway Timeout
+    description: The gateway/proxy server did not receive a timely response from the upstream server.
+- surface: Tebra Clinical Data API (REST, X-Api-Key)
+  envelope: 'Custom {status, message} JSON object'
+  content_type: application/json
+  errors:
+  - code: 400
+    message: <Specific validation error>
+    description: 'Any type of validation (e.g. parameter) error. Example: "Start date can not be after end date".'
+  - code: 401
+    message: API key is required
+    description: No API key was supplied (also returned for a missing/revoked/invalid key per the OpenAPI).
+  - code: 403
+    message: Forbidden
+    description: Returned when a revoked API key is used, per the "API Key Revocation" section of the Oct 2023 PDF.
+  - code: 500
+    message: An error occurred processing your request
+    description: An unexpected exception occurred while processing the request.
+- surface: Tebra SOAP Practice Management API
+  envelope: SOAP 1.1/1.2 Fault
+  content_type: text/xml
+  errors:
+  - code: SOAP Fault
+    message: n/a
+    description: >-
+      SOAP faults rather than HTTP status codes carry error detail; specific
+      fault codes/strings are not enumerated in Tebra's published
+      documentation. Access failures surface as fault responses to the
+      customer-key-scoped SOAP calls.

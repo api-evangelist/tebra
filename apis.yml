@@ -24,6 +24,18 @@ description: >-
   STU3 3.1.1, USCDI v1) at fhir.prd.cloud.tebra.com, built on the SmileCDR
   platform, offering no-charge patient read (GET) access to USCDI clinical
   resources over 2-legged or 3-legged OAuth 2.0.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve

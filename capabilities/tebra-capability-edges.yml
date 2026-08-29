@@ -1,0 +1,228 @@
+slug: tebra
+provider: Tebra
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Healthcare Providers
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 21
+edges:
+- tag: Clinical
+  spec_file: tebra-clinical-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.8
+  evidence: '"This is Tebra''s ONC / 21st Century Cures Act "patient access" API surface ... exposing
+    USCDI-aligned clinical resources for a single authenticated patient"; GET /patient/condition/problemList,
+    GET /patient/immunization'
+  reason: A read-only USCDI patient-access surface across clinical resources — patient-initiated data
+    sharing / interoperability operations on the health record.
+- tag: Encounter
+  spec_file: tebra-encounter-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.8
+  evidence: '"SMART on FHIR (HL7 FHIR R4) read access to a patient''s clinical health information ...
+    satisfying USCDI v1 / ONC 21st Century Cures Act information-blocking requirements"; GET /Encounter
+    "Get encounter"'
+  reason: A read-only FHIR R4 resource endpoint published to satisfy ONC information-blocking rules. The
+    surface realises operation of FHIR endpoints for health information exchange, not the encounter care
+    delivery itself.
+- tag: AllergyIntolerance
+  spec_file: tebra-allergyintolerance-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.75
+  evidence: SMART on FHIR (HL7 FHIR R4) read access to a patient's clinical health information ... satisfying
+    USCDI v1 / ONC 21st Century Cures Act information-blocking requirements; GET /AllergyIntolerance
+  reason: Read-only FHIR endpoint exposing clinical data for interoperability/patient access — best fits
+    Healthcare Interoperability Operations (FHIR endpoints, patient-initiated data sharing) rather than
+    care delivery.
+- tag: CarePlan
+  spec_file: tebra-careplan-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.75
+  evidence: GET /CarePlan getCarePlan Get care plan; "SMART on FHIR (HL7 FHIR R4) read access to a patient's
+    clinical health information"
+  reason: FHIR R4 read endpoint for US Core / USCDI compliance — an interoperability operation exposing
+    the record, not care-planning workflow itself.
+- tag: CareTeam
+  spec_file: tebra-careteam-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.75
+  evidence: GET /CareTeam getCareTeam Get care team; "built on the US Core Implementation Guide STU3 Release
+    3.1.1"
+  reason: Read-only FHIR resource endpoint published for USCDI/Cures Act information-blocking compliance
+    — healthcare interoperability operations.
+- tag: Condition
+  spec_file: tebra-condition-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.75
+  evidence: GET /Condition getCondition Get condition; "satisfying USCDI v1 / ONC 21st Century Cures Act
+    information-blocking requirements"
+  reason: FHIR read endpoint for clinical conditions exposed for interoperability/patient access compliance.
+- tag: DocumentReference
+  spec_file: tebra-documentreference-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.75
+  evidence: GET /DocumentReference getDocumentReference Get document reference; "US Core Implementation
+    Guide STU3 Release 3.1.1"
+  reason: FHIR DocumentReference read for patient access/interoperability compliance rather than internal
+    document management.
+- tag: Goal
+  spec_file: tebra-goal-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.75
+  evidence: GET /Goal "Get goal" with schemas FHIRResource, FHIRBundle, OperationOutcome under "SMART
+    on FHIR (HL7 FHIR R4) read access"
+  reason: Read-only US Core FHIR resource exposure; the business capability realised is healthcare interoperability
+    operations (FHIR endpoint operation), not care planning execution.
+- tag: Immunization
+  spec_file: tebra-immunization-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.75
+  evidence: GET /Immunization "Get immunization" under "US Core Implementation Guide STU3 Release 3.1.1
+    and satisfying USCDI v1"
+  reason: Read-only FHIR resource endpoint for immunization history. Maps to FHIR endpoint / HIE operation
+    rather than to preventive care programme delivery, since no immunization administration operations
+    exist.
+- tag: Location
+  spec_file: tebra-location-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.75
+  evidence: GET /Location "Get location"; "read access to a patient's clinical health information held
+    in the Tebra (formerly Kareo) platform" via FHIR
+  reason: FHIR administrative/directory resource exposed read-only through the interoperability endpoint;
+    realises healthcare interoperability operations.
+- tag: Medication
+  spec_file: tebra-medication-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.75
+  evidence: GET /Medication "Get medication" returning FHIRBundle under "SMART on FHIR (HL7 FHIR R4) read
+    access"
+  reason: Read-only FHIR medication resource retrieval for external app access; this is FHIR endpoint
+    operation, not pharmacy dispensing or formulary management.
+- tag: MedicationRequest
+  spec_file: tebra-medicationrequest-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.75
+  evidence: GET /MedicationRequest "Get medication request" under "US Core Implementation Guide ... USCDI
+    v1" read access
+  reason: Read-only exposure of prescription data via FHIR; no order-entry operations, so the capability
+    realised is interoperability operations rather than CPOE.
+- tag: Observation
+  spec_file: tebra-observation-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.75
+  evidence: GET /Observation "Get observation" with FHIRResource/FHIRBundle schemas under SMART on FHIR
+    read access
+  reason: Read-only FHIR resource retrieval of results/vitals for third-party apps; realises FHIR endpoint
+    operation under information-blocking compliance.
+- tag: Procedure
+  spec_file: tebra-procedure-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.75
+  evidence: GET /Procedure "Get procedure" under "satisfying USCDI v1 / ONC 21st Century Cures Act information-blocking
+    requirements"
+  reason: Read-only FHIR procedure history retrieval for external applications; the capability realised
+    is FHIR endpoint operation, not surgical care delivery.
+- tag: Device
+  spec_file: tebra-device-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.72
+  evidence: GET /Device getDevice Get implantable device; "SMART on FHIR (HL7 FHIR R4) read access to
+    a patient's clinical health information"
+  reason: Implantable-device FHIR resource read for USCDI compliance — interoperability exposure of record
+    data, not device/asset management.
+- tag: Documents
+  spec_file: tebra-documents-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.72
+  evidence: GET /patient/binary/summary getBinarySummary Get clinical summary document; "ONC / 21st Century
+    Cures Act "patient access" API surface"
+  reason: Retrieval of the patient's clinical summary document (CCD-style) via the patient-access API
+    — interoperability/patient data-sharing operation.
+- tag: Organization
+  spec_file: tebra-organization-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.72
+  evidence: GET /Organization "Get organization" within the "Tebra FHIR" SMART on FHIR read-only API
+  reason: FHIR directory resource read endpoint; the honest capability is healthcare interoperability
+    operations, not any organisational governance capability.
+- tag: Practitioner
+  spec_file: tebra-practitioner-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.72
+  evidence: GET /Practitioner "Get practitioner" under "SMART on FHIR (HL7 FHIR R4) read access"
+  reason: FHIR provider directory resource read endpoint — interoperability operation. Deliberately not
+    mapped to credentialing, since there are no credentialing or privileging operations.
+- tag: Provenance
+  spec_file: tebra-provenance-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.72
+  evidence: '"SMART on FHIR (HL7 FHIR R4) read access to a patient''s clinical health information" ...
+    satisfying USCDI v1 / ONC 21st Century Cures Act information-blocking requirements; GET /Provenance'
+  reason: The Provenance resource is exposed purely as part of a US Core / USCDI FHIR read API for third-party
+    app access, i.e. operation of FHIR endpoints and patient-initiated data sharing — healthcare interoperability
+    operations rather than any clinical workflow.
+- tag: DiagnosticReport
+  spec_file: tebra-diagnosticreport-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.7
+  evidence: GET /DiagnosticReport getDiagnosticReport Get diagnostic report; "read access to a patient's
+    clinical health information"
+  reason: Read-only FHIR endpoint publishing diagnostic reports for USCDI/Cures Act interoperability;
+    could arguably be diagnostic results management but the surface is an interoperability endpoint.
+- tag: PractitionerRole
+  spec_file: tebra-practitionerrole-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.7
+  evidence: GET /PractitionerRole "Get practitioner role" returning FHIRBundle under the FHIR read-only
+    API
+  reason: FHIR provider-role directory resource exposed read-only; realises healthcare interoperability
+    operations rather than medical staff governance.

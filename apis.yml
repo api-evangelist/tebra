@@ -566,6 +566,9 @@ apis:
   - type: Sandbox
     url: sandbox/tebra-sandbox.yml
 common:
+- type: CapabilityMap
+  url: capabilities/tebra-capability-edges.yml
+  name: Tebra Business Capability Map
 - type: Overlay
   url: overlays/tebra-fhir-api-overlay.yaml
 - type: MCPServer

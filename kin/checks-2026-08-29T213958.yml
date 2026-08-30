@@ -1,16 +1,16 @@
 ---
 kin_checks:
   slug: tebra
-  schema_version: 0.15.1
-  scored_at: '2026-08-27'
-  run_ts: 2026-08-27T140727
+  schema_version: 0.16.0
+  scored_at: '2026-08-29'
+  run_ts: 2026-08-29T213958
   note: Actionable checks only (missed + partial). earned/na are every other check
-    in rubric/scoring-0.15.1.yml; counts below let you verify that.
+    in rubric/scoring-0.16.0.yml; counts below let you verify that.
   counts:
     total: 130
-    earned: 55
+    earned: 54
     partial: 10
-    missed: 43
+    missed: 44
     na: 22
   checks:
   - id: well_known_published
@@ -21,15 +21,15 @@ kin_checks:
     status: missed
   - id: openapi_3_2
     status: missed
-    detail: 0 of 4 openapi documents pass
+    detail: 0 of 22 openapi documents pass
   - id: openapi_3_1
     status: missed
-    detail: 0 of 4 openapi documents pass
+    detail: 0 of 22 openapi documents pass
   - id: examples_present
     status: missed
   - id: webhooks_or_callbacks
     status: missed
-    detail: 0 of 4 openapi documents pass
+    detail: 0 of 22 openapi documents pass
   - id: asyncapi_present
     status: missed
   - id: json_schema_present
@@ -55,6 +55,8 @@ kin_checks:
   - id: vocabulary_published
     status: missed
   - id: conformance_declared
+    status: missed
+  - id: overlay_published
     status: missed
   - id: change_log_present
     status: missed
@@ -107,12 +109,12 @@ kin_checks:
     earned: 1.25
   - id: operations_operation_ids
     status: partial
-    earned: 3.0
-    detail: 3 of 4 openapi documents pass
+    earned: 3.82
+    detail: 21 of 22 openapi documents pass
   - id: components_reuse
     status: partial
-    earned: 0.75
-    detail: 1 of 4 openapi documents pass
+    earned: 0.14
+    detail: 1 of 22 openapi documents pass
   - id: agent_skill_present
     status: partial
     earned: 0.75
@@ -122,8 +124,8 @@ kin_checks:
     detail: 'authorship: derived'
   - id: auth_clarity
     status: partial
-    earned: 3.5
-    detail: 'grade: bearer'
+    earned: 7.5
+    detail: 'grade: negotiable'
   - id: error_semantics
     status: partial
     earned: 4.0

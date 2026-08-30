@@ -1,0 +1,158 @@
+openapi: 3.2.0
+info:
+  title: Tebra FHIR Organization API
+  description: 'SMART on FHIR (HL7 FHIR R4) read access to a patient''s clinical health information held in the Tebra (formerly Kareo) platform, built on the US Core Implementation Guide STU3 Release 3.1.1 and satisfying USCDI v1 / ONC 21st Century Cures Act information-blocking requirements. Tebra has elected to partner with SmileCDR, a third-party FHIR services provider, to host this API; developers register applications through the appSphere developer portal and accept SmileCDR''s terms at registration.
+
+    All paths, the production/authorization/FHIR base URLs, the resource + parameter table, and the error code table are CONFIRMED verbatim from Tebra''s official "Fast Healthcare Interoperability Resources (FHIR) API User Guide" (Updated May 2025), and from a live probe of fhir.prd.cloud.tebra.com on 2026-08-14 (401 Unauthorized on every resource GET without a token; 302 redirect on /smartauth/oauth/authorize; 401 on POST /smartauth/oauth/token). Response bodies are standard FHIR R4 resources/Bundles per the referenced US Core profiles and are represented here generically (FHIRResource / FHIRBundle) rather than fully modeled, since Tebra''s guide documents request shape and required search parameters but not full response payload schemas.'
+  version: '1.0'
+  contact:
+    name: Tebra
+    url: https://www.tebra.com/macra
+  license:
+    name: Proprietary (Tebra API Terms of Use)
+    url: https://www.tebra.com/wp-content/uploads/2025/05/Tebra-FHIR-API-User-Guide.pdf
+servers:
+- url: https://fhir.prd.cloud.tebra.com/fhir-request
+  description: Tebra FHIR API (production, confirmed live)
+security:
+- smartOnFhirAuthCode: []
+- smartOnFhirClientCredentials: []
+tags:
+- name: Organization
+paths:
+  /Organization:
+    get:
+      tags:
+      - Organization
+      summary: Get organization
+      description: Retrieves the organization associated with a patient or provider.
+      operationId: getOrganization
+      parameters:
+      - name: name
+        in: query
+        required: true
+        description: All organization resources matched to an organization's name.
+        schema:
+          type: string
+      - name: address
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/FHIRBundleResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+components:
+  responses:
+    Forbidden:
+      description: Forbidden - a valid request was received but refused; typically the caller lacks the necessary permissions for the specified resource.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    Unauthorized:
+      description: Unauthorized - the required authentication failed or was not provided.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    FHIRBundleResponse:
+      description: FHIR searchset Bundle.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/FHIRBundle'
+  schemas:
+    FHIRResource:
+      type: object
+      description: A standard HL7 FHIR R4 resource (US Core profiled). Structure follows the named US Core profile; not independently modeled here.
+      properties:
+        resourceType:
+          type: string
+        id:
+          type: string
+      additionalProperties: true
+    OperationOutcome:
+      type: object
+      description: Standard FHIR OperationOutcome error body.
+      properties:
+        resourceType:
+          type: string
+          example: OperationOutcome
+        issue:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: string
+              code:
+                type: string
+              diagnostics:
+                type: string
+    FHIRBundle:
+      type: object
+      description: Standard FHIR R4 searchset Bundle wrapping zero or more FHIRResource entries.
+      properties:
+        resourceType:
+          type: string
+          example: Bundle
+        type:
+          type: string
+          example: searchset
+        total:
+          type: integer
+        entry:
+          type: array
+          items:
+            type: object
+            properties:
+              resource:
+                $ref: '#/components/schemas/FHIRResource'
+  securitySchemes:
+    smartOnFhirAuthCode:
+      type: oauth2
+      description: SMART on FHIR 3-legged OAuth 2.0 authorization-code flow for user-facing (patient/provider) applications. Authorization/token URLs are confirmed verbatim from the Tebra FHIR API User Guide. The scope list below is DERIVED, not verbatim - Tebra's guide instructs developers to "enter the SMART scopes required" without publishing an enumerated list, so these are the standard SMART v1 `patient/<Resource>.read` scope strings applied to the resource set Tebra's own guide documents.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://fhir.prd.cloud.tebra.com/smartauth/oauth/authorize
+          tokenUrl: https://fhir.prd.cloud.tebra.com/smartauth/oauth/token
+          scopes:
+            patient/Patient.read: Read the patient's demographic record.
+            patient/AllergyIntolerance.read: Read the patient's allergies/intolerances.
+            patient/CarePlan.read: Read the patient's care plans.
+            patient/CareTeam.read: Read the patient's care team.
+            patient/Condition.read: Read the patient's conditions/problems.
+            patient/DiagnosticReport.read: Read the patient's diagnostic reports.
+            patient/DocumentReference.read: Read the patient's documents/clinical notes.
+            patient/Encounter.read: Read the patient's encounters.
+            patient/Goal.read: Read the patient's goals.
+            patient/Immunization.read: Read the patient's immunizations.
+            patient/Device.read: Read the patient's implantable devices.
+            patient/Observation.read: Read the patient's observations (vitals/labs/smoking status).
+            patient/Location.read: Read location resources.
+            patient/Medication.read: Read medication resources.
+            patient/MedicationRequest.read: Read the patient's medication requests.
+            patient/Organization.read: Read organization resources.
+            patient/Practitioner.read: Read practitioner resources.
+            patient/PractitionerRole.read: Read practitioner-role resources.
+            patient/Procedure.read: Read the patient's procedures.
+            patient/Provenance.read: Read provenance resources.
+            launch/patient: Identify the launch patient context.
+            openid: OpenID Connect identity claim.
+            fhirUser: FHIR user identity claim.
+            offline_access: Obtain a refresh token.
+    smartOnFhirClientCredentials:
+      type: oauth2
+      description: SMART on FHIR 2-legged OAuth 2.0 client-credentials flow for backend services applications (no end-user present). Token endpoint is confirmed verbatim from the Tebra FHIR API User Guide; Tebra currently supports only the Client Credentials workflow (not JWKS-based backend auth). Scope strings below are DERIVED (`system/<Resource>.read`, standard SMART v1 syntax), not verbatim - see note above.
+      flows:
+        clientCredentials:
+          tokenUrl: https://fhir.prd.cloud.tebra.com/smartauth/oauth/token
+          scopes:
+            system/Patient.read: Read patient demographic records.
+            system/Observation.read: Read observation resources.
+            system/DocumentReference.read: Read document reference resources.

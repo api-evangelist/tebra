@@ -223,42 +223,6 @@ apis:
     url: collections/tebra-clinical.postman_collection.json
   - type: Overlay
     url: overlays/tebra-patient-api-overlay.yaml
-- aid: tebra:tebra-allergyintolerance-api
-  name: Tebra Allergy Intolerance API
-  description: The AllergyIntolerance API from Tebra — 1 operation(s) for allergyintolerance.
-  humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
-  baseURL: https://webservice.kareo.com/services/soap/2.1
-  tags:
-  - AllergyIntolerance
-  properties:
-  - type: OpenAPI
-    url: openapi/tebra-allergyintolerance-api-openapi.yml
-  - type: Documentation
-    url: https://www.tebra.com/macra
-  - type: APIReference
-    url: https://www.tebra.com/wp-content/uploads/2025/05/Tebra-FHIR-API-User-Guide.pdf
-  - type: DeveloperPortal
-    url: https://fhir.prd.cloud.tebra.com/appsphere/portal/#/login
-  - type: Sandbox
-    url: sandbox/tebra-sandbox.yml
-- aid: tebra:tebra-careplan-api
-  name: Tebra Care Plan API
-  description: The CarePlan API from Tebra — 1 operation(s) for careplan.
-  humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
-  baseURL: https://webservice.kareo.com/services/soap/2.1
-  tags:
-  - CarePlan
-  properties:
-  - type: OpenAPI
-    url: openapi/tebra-careplan-api-openapi.yml
-  - type: Documentation
-    url: https://www.tebra.com/macra
-  - type: APIReference
-    url: https://www.tebra.com/wp-content/uploads/2025/05/Tebra-FHIR-API-User-Guide.pdf
-  - type: DeveloperPortal
-    url: https://fhir.prd.cloud.tebra.com/appsphere/portal/#/login
-  - type: Sandbox
-    url: sandbox/tebra-sandbox.yml
 - aid: tebra:tebra-careteam-api
   name: Tebra Care Team API
   description: The CareTeam API from Tebra — 1 operation(s) for careteam.
@@ -323,24 +287,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/tebra-diagnosticreport-api-openapi.yml
-  - type: Documentation
-    url: https://www.tebra.com/macra
-  - type: APIReference
-    url: https://www.tebra.com/wp-content/uploads/2025/05/Tebra-FHIR-API-User-Guide.pdf
-  - type: DeveloperPortal
-    url: https://fhir.prd.cloud.tebra.com/appsphere/portal/#/login
-  - type: Sandbox
-    url: sandbox/tebra-sandbox.yml
-- aid: tebra:tebra-documentreference-api
-  name: Tebra Document Reference API
-  description: The DocumentReference API from Tebra — 1 operation(s) for documentreference.
-  humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
-  baseURL: https://webservice.kareo.com/services/soap/2.1
-  tags:
-  - DocumentReference
-  properties:
-  - type: OpenAPI
-    url: openapi/tebra-documentreference-api-openapi.yml
   - type: Documentation
     url: https://www.tebra.com/macra
   - type: APIReference
@@ -439,24 +385,6 @@ apis:
     url: https://fhir.prd.cloud.tebra.com/appsphere/portal/#/login
   - type: Sandbox
     url: sandbox/tebra-sandbox.yml
-- aid: tebra:tebra-medicationrequest-api
-  name: Tebra Medication Request API
-  description: The MedicationRequest API from Tebra — 1 operation(s) for medicationrequest.
-  humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
-  baseURL: https://webservice.kareo.com/services/soap/2.1
-  tags:
-  - MedicationRequest
-  properties:
-  - type: OpenAPI
-    url: openapi/tebra-medicationrequest-api-openapi.yml
-  - type: Documentation
-    url: https://www.tebra.com/macra
-  - type: APIReference
-    url: https://www.tebra.com/wp-content/uploads/2025/05/Tebra-FHIR-API-User-Guide.pdf
-  - type: DeveloperPortal
-    url: https://fhir.prd.cloud.tebra.com/appsphere/portal/#/login
-  - type: Sandbox
-    url: sandbox/tebra-sandbox.yml
 - aid: tebra:tebra-observation-api
   name: Tebra Observation API
   description: The Observation API from Tebra — 1 operation(s) for observation.
@@ -511,24 +439,6 @@ apis:
     url: https://fhir.prd.cloud.tebra.com/appsphere/portal/#/login
   - type: Sandbox
     url: sandbox/tebra-sandbox.yml
-- aid: tebra:tebra-practitionerrole-api
-  name: Tebra Practitioner Role API
-  description: The PractitionerRole API from Tebra — 1 operation(s) for practitionerrole.
-  humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
-  baseURL: https://webservice.kareo.com/services/soap/2.1
-  tags:
-  - PractitionerRole
-  properties:
-  - type: OpenAPI
-    url: openapi/tebra-practitionerrole-api-openapi.yml
-  - type: Documentation
-    url: https://www.tebra.com/macra
-  - type: APIReference
-    url: https://www.tebra.com/wp-content/uploads/2025/05/Tebra-FHIR-API-User-Guide.pdf
-  - type: DeveloperPortal
-    url: https://fhir.prd.cloud.tebra.com/appsphere/portal/#/login
-  - type: Sandbox
-    url: sandbox/tebra-sandbox.yml
 - aid: tebra:tebra-procedure-api
   name: Tebra Procedure API
   description: The Procedure API from Tebra — 1 operation(s) for procedure.
@@ -557,6 +467,96 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/tebra-provenance-api-openapi.yml
+  - type: Documentation
+    url: https://www.tebra.com/macra
+  - type: APIReference
+    url: https://www.tebra.com/wp-content/uploads/2025/05/Tebra-FHIR-API-User-Guide.pdf
+  - type: DeveloperPortal
+    url: https://fhir.prd.cloud.tebra.com/appsphere/portal/#/login
+  - type: Sandbox
+    url: sandbox/tebra-sandbox.yml
+- aid: tebra:tebra-allergy-intolerance-api
+  name: Tebra Allergy Intolerance API
+  description: The Allergy Intolerance API from Tebra — 1 operation(s) for allergy intolerance.
+  humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
+  baseURL: https://webservice.kareo.com/services/soap/2.1
+  tags:
+  - Allergy Intolerance
+  properties:
+  - type: OpenAPI
+    url: openapi/tebra-allergy-intolerance-api-openapi.yml
+  - type: Documentation
+    url: https://www.tebra.com/macra
+  - type: APIReference
+    url: https://www.tebra.com/wp-content/uploads/2025/05/Tebra-FHIR-API-User-Guide.pdf
+  - type: DeveloperPortal
+    url: https://fhir.prd.cloud.tebra.com/appsphere/portal/#/login
+  - type: Sandbox
+    url: sandbox/tebra-sandbox.yml
+- aid: tebra:tebra-care-plan-api
+  name: Tebra Care plan API
+  description: The Care plan API from Tebra — 1 operation(s) for care plan.
+  humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
+  baseURL: https://webservice.kareo.com/services/soap/2.1
+  tags:
+  - Care plan
+  properties:
+  - type: OpenAPI
+    url: openapi/tebra-care-plan-api-openapi.yml
+  - type: Documentation
+    url: https://www.tebra.com/macra
+  - type: APIReference
+    url: https://www.tebra.com/wp-content/uploads/2025/05/Tebra-FHIR-API-User-Guide.pdf
+  - type: DeveloperPortal
+    url: https://fhir.prd.cloud.tebra.com/appsphere/portal/#/login
+  - type: Sandbox
+    url: sandbox/tebra-sandbox.yml
+- aid: tebra:tebra-document-reference-api
+  name: Tebra Document Reference API
+  description: The Document Reference API from Tebra — 1 operation(s) for document reference.
+  humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
+  baseURL: https://webservice.kareo.com/services/soap/2.1
+  tags:
+  - Document Reference
+  properties:
+  - type: OpenAPI
+    url: openapi/tebra-document-reference-api-openapi.yml
+  - type: Documentation
+    url: https://www.tebra.com/macra
+  - type: APIReference
+    url: https://www.tebra.com/wp-content/uploads/2025/05/Tebra-FHIR-API-User-Guide.pdf
+  - type: DeveloperPortal
+    url: https://fhir.prd.cloud.tebra.com/appsphere/portal/#/login
+  - type: Sandbox
+    url: sandbox/tebra-sandbox.yml
+- aid: tebra:tebra-medication-request-api
+  name: Tebra Medication Request API
+  description: The Medication Request API from Tebra — 1 operation(s) for medication request.
+  humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
+  baseURL: https://webservice.kareo.com/services/soap/2.1
+  tags:
+  - Medication Request
+  properties:
+  - type: OpenAPI
+    url: openapi/tebra-medication-request-api-openapi.yml
+  - type: Documentation
+    url: https://www.tebra.com/macra
+  - type: APIReference
+    url: https://www.tebra.com/wp-content/uploads/2025/05/Tebra-FHIR-API-User-Guide.pdf
+  - type: DeveloperPortal
+    url: https://fhir.prd.cloud.tebra.com/appsphere/portal/#/login
+  - type: Sandbox
+    url: sandbox/tebra-sandbox.yml
+- aid: tebra:tebra-practitioner-role-api
+  name: Tebra Practitioner Role API
+  description: The Practitioner Role API from Tebra — 1 operation(s) for practitioner role.
+  humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
+  baseURL: https://webservice.kareo.com/services/soap/2.1
+  tags:
+  - Practitioner Role
+  properties:
+  - type: OpenAPI
+    url: openapi/tebra-practitioner-role-api-openapi.yml
   - type: Documentation
     url: https://www.tebra.com/macra
   - type: APIReference

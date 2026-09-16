@@ -1,20 +1,48 @@
-generated: '2026-07-15'
+generated: '2026-09-16'
 method: generated
-source: openapi/tebra-clinical-openapi.yml
+source: openapi/tebra-allergy-intolerance-api-openapi.yml, openapi/tebra-care-plan-api-openapi.yml,
+  openapi/tebra-careteam-api-openapi.yml, openapi/tebra-clinical-api-openapi.yml, openapi/tebra-condition-api-openapi.yml,
+  openapi/tebra-device-api-openapi.yml, openapi/tebra-diagnosticreport-api-openapi.yml, openapi/tebra-document-reference-api-openapi.yml,
+  openapi/tebra-documents-api-openapi.yml, openapi/tebra-encounter-api-openapi.yml, openapi/tebra-goal-api-openapi.yml,
+  openapi/tebra-immunization-api-openapi.yml, openapi/tebra-location-api-openapi.yml, openapi/tebra-medication-api-openapi.yml,
+  openapi/tebra-medication-request-api-openapi.yml, openapi/tebra-observation-api-openapi.yml,
+  openapi/tebra-organization-api-openapi.yml, openapi/tebra-patient-api-openapi.yml, openapi/tebra-practitioner-api-openapi.yml,
+  openapi/tebra-practitioner-role-api-openapi.yml, openapi/tebra-procedure-api-openapi.yml,
+  openapi/tebra-provenance-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
-  operations: 14
+  operations: 34
   by_action_class:
-    connected: 14
+    connected: 34
   by_consequence:
-    read: 14
+    read: 34
   human_in_the_loop_required: 0
 operations:
-- path: /patient
+- path: /AllergyIntolerance
   method: get
-  operationId: getPatient
+  operationId: getAllergyIntolerance
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /CarePlan
+  method: get
+  operationId: getCarePlan
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /CareTeam
+  method: get
+  operationId: getCareTeam
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -142,9 +170,189 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /Condition
+  method: get
+  operationId: getCondition
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Device
+  method: get
+  operationId: getDevice
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /DiagnosticReport
+  method: get
+  operationId: getDiagnosticReport
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /DocumentReference
+  method: get
+  operationId: getDocumentReference
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /patient/binary/summary
   method: get
   operationId: getBinarySummary
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Encounter
+  method: get
+  operationId: getEncounter
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Goal
+  method: get
+  operationId: getGoal
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Immunization
+  method: get
+  operationId: getImmunization
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Location
+  method: get
+  operationId: getLocation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Medication
+  method: get
+  operationId: getMedication
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /MedicationRequest
+  method: get
+  operationId: getMedicationRequest
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Observation
+  method: get
+  operationId: getObservation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Organization
+  method: get
+  operationId: getOrganization
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /patient
+  method: get
+  operationId: getPatient
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Patient
+  method: get
+  operationId: getPatient
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Practitioner
+  method: get
+  operationId: getPractitioner
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /PractitionerRole
+  method: get
+  operationId: getPractitionerRole
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Procedure
+  method: get
+  operationId: getProcedure
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Provenance
+  method: get
+  operationId: getProvenance
   x-agentic-access:
     action-class: connected
     consequence: read

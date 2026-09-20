@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 17
+edge_count: 22
 edges:
 - tag: AllergyIntolerance
   spec_file: tebra-allergy-intolerance-api-openapi.yml
@@ -82,6 +82,28 @@ edges:
     ONC 21st Century Cures Act information-blocking requirements"
   reason: FHIR DocumentReference read endpoint exposing clinical documents for external app access — health
     information exchange / patient-initiated data sharing.
+- tag: Goal
+  spec_file: tebra-goal-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.75
+  evidence: GET /Goal "Get goal" with schemas FHIRResource, FHIRBundle, OperationOutcome under "SMART
+    on FHIR (HL7 FHIR R4) read access"
+  reason: Read-only US Core FHIR resource exposure; the business capability realised is healthcare interoperability
+    operations (FHIR endpoint operation), not care planning execution.
+  recovered_from: healthcare-vertical-edges.json
+- tag: Location
+  spec_file: tebra-location-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.75
+  evidence: GET /Location "Get location"; "read access to a patient's clinical health information held
+    in the Tebra (formerly Kareo) platform" via FHIR
+  reason: FHIR administrative/directory resource exposed read-only through the interoperability endpoint;
+    realises healthcare interoperability operations.
+  recovered_from: healthcare-vertical-edges.json
 - tag: MedicationRequest
   spec_file: tebra-medication-request-api-openapi.yml
   reanchored_from: tebra-medicationrequest-api-openapi.yml
@@ -144,6 +166,26 @@ edges:
     clinical health information held in the Tebra ... platform"
   reason: Read-only FHIR resource exposure under US Core / USCDI for third-party apps; the capability
     realised is FHIR endpoint / interoperability operation rather than diagnostic results production.
+- tag: Organization
+  spec_file: tebra-organization-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.72
+  evidence: GET /Organization "Get organization" within the "Tebra FHIR" SMART on FHIR read-only API
+  reason: FHIR directory resource read endpoint; the honest capability is healthcare interoperability
+    operations, not any organisational governance capability.
+  recovered_from: healthcare-vertical-edges.json
+- tag: Practitioner
+  spec_file: tebra-practitioner-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.72
+  evidence: GET /Practitioner "Get practitioner" under "SMART on FHIR (HL7 FHIR R4) read access"
+  reason: FHIR provider directory resource read endpoint — interoperability operation. Deliberately not
+    mapped to credentialing, since there are no credentialing or privileging operations.
+  recovered_from: healthcare-vertical-edges.json
 - tag: DiagnosticReport
   spec_file: tebra-diagnosticreport-api-openapi.yml
   capability_id: BC-2900.60
@@ -176,6 +218,18 @@ edges:
   reason: Patient demographic retrieval exposed through the FHIR/US Core read surface for third-party
     patient-access apps; interoperability operation rather than registration or MPI stewardship, which
     would require write/merge operations.
+- tag: PractitionerRole
+  spec_file: tebra-practitioner-role-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.7
+  evidence: GET /PractitionerRole "Get practitioner role" returning FHIRBundle under the FHIR read-only
+    API
+  reason: FHIR provider-role directory resource exposed read-only; realises healthcare interoperability
+    operations rather than medical staff governance.
+  recovered_from: healthcare-vertical-edges.json
+  reanchored_from: tebra-practitionerrole-api-openapi.yml
 - tag: Procedure
   spec_file: tebra-procedure-api-openapi.yml
   capability_id: BC-2900.60

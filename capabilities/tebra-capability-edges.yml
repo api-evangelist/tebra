@@ -14,7 +14,8 @@ capability_model:
 edge_count: 17
 edges:
 - tag: AllergyIntolerance
-  spec_file: tebra-allergyintolerance-api-openapi.yml
+  spec_file: tebra-allergy-intolerance-api-openapi.yml
+  reanchored_from: tebra-allergyintolerance-api-openapi.yml
   capability_id: BC-2900.60
   capability_id_l1: BC-2900
   capability_name: Healthcare Interoperability Operations
@@ -26,7 +27,8 @@ edges:
     record. The capability realised is operation of provider FHIR endpoints / patient-initiated data sharing,
     i.e. healthcare interoperability operations, rather than the clinical act of allergy assessment.
 - tag: CarePlan
-  spec_file: tebra-careplan-api-openapi.yml
+  spec_file: tebra-care-plan-api-openapi.yml
+  reanchored_from: tebra-careplan-api-openapi.yml
   capability_id: BC-2900.60
   capability_id_l1: BC-2900
   capability_name: Healthcare Interoperability Operations
@@ -70,7 +72,8 @@ edges:
   reason: Single read-only FHIR resource endpoint forming part of the ONC-mandated FHIR API; realises
     interoperability/data-sharing operations, not condition management workflow.
 - tag: DocumentReference
-  spec_file: tebra-documentreference-api-openapi.yml
+  spec_file: tebra-document-reference-api-openapi.yml
+  reanchored_from: tebra-documentreference-api-openapi.yml
   capability_id: BC-2900.60
   capability_id_l1: BC-2900
   capability_name: Healthcare Interoperability Operations
@@ -80,7 +83,8 @@ edges:
   reason: FHIR DocumentReference read endpoint exposing clinical documents for external app access — health
     information exchange / patient-initiated data sharing.
 - tag: MedicationRequest
-  spec_file: tebra-medicationrequest-api-openapi.yml
+  spec_file: tebra-medication-request-api-openapi.yml
+  reanchored_from: tebra-medicationrequest-api-openapi.yml
   capability_id: BC-2900.60
   capability_id_l1: BC-2900
   capability_name: Healthcare Interoperability Operations

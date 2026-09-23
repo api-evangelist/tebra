@@ -1,18 +1,68 @@
 {
   "provider": "tebra",
   "sources": [
-    "tebra-clinical-api-openapi.yml",
-    "tebra-documents-api-openapi.yml",
-    "tebra-patient-api-openapi.yml"
+    "_original/tebra-clinical-openapi.yml",
+    "_original/tebra-fhir-api-openapi.yml"
   ],
   "outputs": [
     "tebra-clinical-api-openapi.yml",
     "tebra-documents-api-openapi.yml",
-    "tebra-patient-api-openapi.yml"
+    "tebra-patient-api-openapi.yml",
+    "tebra-allergyintolerance-api-openapi.yml",
+    "tebra-careplan-api-openapi.yml",
+    "tebra-careteam-api-openapi.yml",
+    "tebra-condition-api-openapi.yml",
+    "tebra-device-api-openapi.yml",
+    "tebra-diagnosticreport-api-openapi.yml",
+    "tebra-documentreference-api-openapi.yml",
+    "tebra-encounter-api-openapi.yml",
+    "tebra-goal-api-openapi.yml",
+    "tebra-immunization-api-openapi.yml",
+    "tebra-location-api-openapi.yml",
+    "tebra-medication-api-openapi.yml",
+    "tebra-medicationrequest-api-openapi.yml",
+    "tebra-observation-api-openapi.yml",
+    "tebra-organization-api-openapi.yml",
+    "tebra-practitioner-api-openapi.yml",
+    "tebra-practitionerrole-api-openapi.yml",
+    "tebra-procedure-api-openapi.yml",
+    "tebra-provenance-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 5 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "tebra-clinical-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "tebra-fhir-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "tag 'Patient' spans 2 source specs (tebra-clinical-openapi.yml, tebra-fhir-api-openapi.yml): per-path servers applied",
+    "superseded outputs removed: tebra-allergy-intolerance-api-openapi.yml, tebra-care-plan-api-openapi.yml, tebra-document-reference-api-openapi.yml, tebra-medication-request-api-openapi.yml, tebra-practitioner-role-api-openapi.yml",
+    "apis.yml register: written (+5 apis, 27 total)"
+  ],
+  "skipped": [
+    "tebra-allergy-intolerance-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tebra-care-plan-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tebra-careteam-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tebra-clinical-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tebra-condition-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tebra-device-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tebra-diagnosticreport-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tebra-document-reference-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tebra-documents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tebra-encounter-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tebra-goal-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tebra-immunization-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tebra-location-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tebra-medication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tebra-medication-request-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tebra-observation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tebra-organization-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tebra-patient-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tebra-practitioner-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tebra-practitioner-role-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tebra-procedure-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tebra-provenance-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

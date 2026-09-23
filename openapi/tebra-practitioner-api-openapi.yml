@@ -1,9 +1,7 @@
 openapi: 3.2.0
 info:
   title: Tebra FHIR Practitioner API
-  description: 'SMART on FHIR (HL7 FHIR R4) read access to a patient''s clinical health information held in the Tebra (formerly Kareo) platform, built on the US Core Implementation Guide STU3 Release 3.1.1 and satisfying USCDI v1 / ONC 21st Century Cures Act information-blocking requirements. Tebra has elected to partner with SmileCDR, a third-party FHIR services provider, to host this API; developers register applications through the appSphere developer portal and accept SmileCDR''s terms at registration.
-
-    All paths, the production/authorization/FHIR base URLs, the resource + parameter table, and the error code table are CONFIRMED verbatim from Tebra''s official "Fast Healthcare Interoperability Resources (FHIR) API User Guide" (Updated May 2025), and from a live probe of fhir.prd.cloud.tebra.com on 2026-08-14 (401 Unauthorized on every resource GET without a token; 302 redirect on /smartauth/oauth/authorize; 401 on POST /smartauth/oauth/token). Response bodies are standard FHIR R4 resources/Bundles per the referenced US Core profiles and are represented here generically (FHIRResource / FHIRBundle) rather than fully modeled, since Tebra''s guide documents request shape and required search parameters but not full response payload schemas.'
+  description: SMART on FHIR (HL7 FHIR R4) read access to a patient's clinical health information held in the Tebra (formerly Kareo) platform, built on the US Core Implementation Guide STU3 Release 3.1.1 and satisfying USCDI v1 / ONC 21st Century Cures Act information-blocking requirements.
   version: '1.0'
   contact:
     name: Tebra
@@ -48,26 +46,26 @@ paths:
         '403':
           $ref: '#/components/responses/Forbidden'
 components:
-  responses:
-    Forbidden:
-      description: Forbidden - a valid request was received but refused; typically the caller lacks the necessary permissions for the specified resource.
-      content:
-        application/fhir+json:
-          schema:
-            $ref: '#/components/schemas/OperationOutcome'
-    Unauthorized:
-      description: Unauthorized - the required authentication failed or was not provided.
-      content:
-        application/fhir+json:
-          schema:
-            $ref: '#/components/schemas/OperationOutcome'
-    FHIRBundleResponse:
-      description: FHIR searchset Bundle.
-      content:
-        application/fhir+json:
-          schema:
-            $ref: '#/components/schemas/FHIRBundle'
   schemas:
+    FHIRBundle:
+      type: object
+      description: Standard FHIR R4 searchset Bundle wrapping zero or more FHIRResource entries.
+      properties:
+        resourceType:
+          type: string
+          example: Bundle
+        type:
+          type: string
+          example: searchset
+        total:
+          type: integer
+        entry:
+          type: array
+          items:
+            type: object
+            properties:
+              resource:
+                $ref: '#/components/schemas/FHIRResource'
     FHIRResource:
       type: object
       description: A standard HL7 FHIR R4 resource (US Core profiled). Structure follows the named US Core profile; not independently modeled here.
@@ -95,25 +93,25 @@ components:
                 type: string
               diagnostics:
                 type: string
-    FHIRBundle:
-      type: object
-      description: Standard FHIR R4 searchset Bundle wrapping zero or more FHIRResource entries.
-      properties:
-        resourceType:
-          type: string
-          example: Bundle
-        type:
-          type: string
-          example: searchset
-        total:
-          type: integer
-        entry:
-          type: array
-          items:
-            type: object
-            properties:
-              resource:
-                $ref: '#/components/schemas/FHIRResource'
+  responses:
+    Forbidden:
+      description: Forbidden - a valid request was received but refused; typically the caller lacks the necessary permissions for the specified resource.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    FHIRBundleResponse:
+      description: FHIR searchset Bundle.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/FHIRBundle'
+    Unauthorized:
+      description: Unauthorized - the required authentication failed or was not provided.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
   securitySchemes:
     smartOnFhirAuthCode:
       type: oauth2

@@ -211,14 +211,16 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: The API Key is missing, revoked, or otherwise not valid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 401
+        message:
+          type: string
+          example: Unauthorized
     ResourceList:
       type: object
       description: Generic container for a list of USCDI-aligned clinical resources (modeled). Actual payloads follow Tebra's clinical data format.
@@ -230,15 +232,13 @@ components:
           items:
             type: object
             additionalProperties: true
-    Error:
-      type: object
-      properties:
-        status:
-          type: integer
-          example: 401
-        message:
-          type: string
-          example: Unauthorized
+  responses:
+    Unauthorized:
+      description: The API Key is missing, revoked, or otherwise not valid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     apiKeyAuth:
       type: apiKey

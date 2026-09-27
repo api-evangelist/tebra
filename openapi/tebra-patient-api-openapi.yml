@@ -81,6 +81,15 @@ paths:
       description: Tebra FHIR API (production, confirmed live)
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 401
+        message:
+          type: string
+          example: Unauthorized
     Patient:
       type: object
       description: Patient demographic record (modeled).
@@ -96,15 +105,15 @@ components:
           format: date
         gender:
           type: string
-    Error:
+    FHIRResource:
       type: object
+      description: A standard HL7 FHIR R4 resource (US Core profiled). Structure follows the named US Core profile; not independently modeled here.
       properties:
-        status:
-          type: integer
-          example: 401
-        message:
+        resourceType:
           type: string
-          example: Unauthorized
+        id:
+          type: string
+      additionalProperties: true
     FHIRBundle:
       type: object
       description: Standard FHIR R4 searchset Bundle wrapping zero or more FHIRResource entries.
@@ -124,15 +133,6 @@ components:
             properties:
               resource:
                 $ref: '#/components/schemas/FHIRResource'
-    FHIRResource:
-      type: object
-      description: A standard HL7 FHIR R4 resource (US Core profiled). Structure follows the named US Core profile; not independently modeled here.
-      properties:
-        resourceType:
-          type: string
-        id:
-          type: string
-      additionalProperties: true
     OperationOutcome:
       type: object
       description: Standard FHIR OperationOutcome error body.
@@ -158,12 +158,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    FHIRBundleResponse:
-      description: FHIR searchset Bundle.
-      content:
-        application/fhir+json:
-          schema:
-            $ref: '#/components/schemas/FHIRBundle'
     Forbidden:
       description: Forbidden - a valid request was received but refused; typically the caller lacks the necessary permissions for the specified resource.
       content:
@@ -176,14 +170,20 @@ components:
         application/fhir+json:
           schema:
             $ref: '#/components/schemas/OperationOutcome'
-    BadRequest:
-      description: Bad Request - the server cannot process the request due to an apparent client error.
+    Unauthorized_2:
+      description: Unauthorized - the required authentication failed or was not provided.
       content:
         application/fhir+json:
           schema:
             $ref: '#/components/schemas/OperationOutcome'
-    Unauthorized_2:
-      description: Unauthorized - the required authentication failed or was not provided.
+    FHIRBundleResponse:
+      description: FHIR searchset Bundle.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/FHIRBundle'
+    BadRequest:
+      description: Bad Request - the server cannot process the request due to an apparent client error.
       content:
         application/fhir+json:
           schema:

@@ -45,12 +45,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
 components:
   responses:
-    FHIRBundleResponse:
-      description: FHIR searchset Bundle.
-      content:
-        application/fhir+json:
-          schema:
-            $ref: '#/components/schemas/FHIRBundle'
     Forbidden:
       description: Forbidden - a valid request was received but refused; typically the caller lacks the necessary permissions for the specified resource.
       content:
@@ -63,19 +57,34 @@ components:
         application/fhir+json:
           schema:
             $ref: '#/components/schemas/OperationOutcome'
-    BadRequest:
-      description: Bad Request - the server cannot process the request due to an apparent client error.
-      content:
-        application/fhir+json:
-          schema:
-            $ref: '#/components/schemas/OperationOutcome'
     Unauthorized:
       description: Unauthorized - the required authentication failed or was not provided.
       content:
         application/fhir+json:
           schema:
             $ref: '#/components/schemas/OperationOutcome'
+    FHIRBundleResponse:
+      description: FHIR searchset Bundle.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/FHIRBundle'
+    BadRequest:
+      description: Bad Request - the server cannot process the request due to an apparent client error.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
   schemas:
+    FHIRResource:
+      type: object
+      description: A standard HL7 FHIR R4 resource (US Core profiled). Structure follows the named US Core profile; not independently modeled here.
+      properties:
+        resourceType:
+          type: string
+        id:
+          type: string
+      additionalProperties: true
     FHIRBundle:
       type: object
       description: Standard FHIR R4 searchset Bundle wrapping zero or more FHIRResource entries.
@@ -95,15 +104,6 @@ components:
             properties:
               resource:
                 $ref: '#/components/schemas/FHIRResource'
-    FHIRResource:
-      type: object
-      description: A standard HL7 FHIR R4 resource (US Core profiled). Structure follows the named US Core profile; not independently modeled here.
-      properties:
-        resourceType:
-          type: string
-        id:
-          type: string
-      additionalProperties: true
     OperationOutcome:
       type: object
       description: Standard FHIR OperationOutcome error body.

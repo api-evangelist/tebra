@@ -45,20 +45,8 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
 components:
   responses:
-    Forbidden:
-      description: Forbidden - a valid request was received but refused; typically the caller lacks the necessary permissions for the specified resource.
-      content:
-        application/fhir+json:
-          schema:
-            $ref: '#/components/schemas/OperationOutcome'
-    TooManyRequests:
-      description: Too Many Requests - too many requests sent in a given time period.
-      content:
-        application/fhir+json:
-          schema:
-            $ref: '#/components/schemas/OperationOutcome'
-    Unauthorized:
-      description: Unauthorized - the required authentication failed or was not provided.
+    BadRequest:
+      description: Bad Request - the server cannot process the request due to an apparent client error.
       content:
         application/fhir+json:
           schema:
@@ -69,22 +57,25 @@ components:
         application/fhir+json:
           schema:
             $ref: '#/components/schemas/FHIRBundle'
-    BadRequest:
-      description: Bad Request - the server cannot process the request due to an apparent client error.
+    Forbidden:
+      description: Forbidden - a valid request was received but refused; typically the caller lacks the necessary permissions for the specified resource.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    Unauthorized:
+      description: Unauthorized - the required authentication failed or was not provided.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    TooManyRequests:
+      description: Too Many Requests - too many requests sent in a given time period.
       content:
         application/fhir+json:
           schema:
             $ref: '#/components/schemas/OperationOutcome'
   schemas:
-    FHIRResource:
-      type: object
-      description: A standard HL7 FHIR R4 resource (US Core profiled). Structure follows the named US Core profile; not independently modeled here.
-      properties:
-        resourceType:
-          type: string
-        id:
-          type: string
-      additionalProperties: true
     FHIRBundle:
       type: object
       description: Standard FHIR R4 searchset Bundle wrapping zero or more FHIRResource entries.
@@ -122,6 +113,15 @@ components:
                 type: string
               diagnostics:
                 type: string
+    FHIRResource:
+      type: object
+      description: A standard HL7 FHIR R4 resource (US Core profiled). Structure follows the named US Core profile; not independently modeled here.
+      properties:
+        resourceType:
+          type: string
+        id:
+          type: string
+      additionalProperties: true
   securitySchemes:
     smartOnFhirAuthCode:
       type: oauth2

@@ -45,6 +45,12 @@ paths:
           $ref: '#/components/responses/Forbidden'
 components:
   responses:
+    FHIRBundleResponse:
+      description: FHIR searchset Bundle.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/FHIRBundle'
     Forbidden:
       description: Forbidden - a valid request was received but refused; typically the caller lacks the necessary permissions for the specified resource.
       content:
@@ -57,22 +63,25 @@ components:
         application/fhir+json:
           schema:
             $ref: '#/components/schemas/OperationOutcome'
-    FHIRBundleResponse:
-      description: FHIR searchset Bundle.
-      content:
-        application/fhir+json:
-          schema:
-            $ref: '#/components/schemas/FHIRBundle'
   schemas:
-    FHIRResource:
+    OperationOutcome:
       type: object
-      description: A standard HL7 FHIR R4 resource (US Core profiled). Structure follows the named US Core profile; not independently modeled here.
+      description: Standard FHIR OperationOutcome error body.
       properties:
         resourceType:
           type: string
-        id:
-          type: string
-      additionalProperties: true
+          example: OperationOutcome
+        issue:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: string
+              code:
+                type: string
+              diagnostics:
+                type: string
     FHIRBundle:
       type: object
       description: Standard FHIR R4 searchset Bundle wrapping zero or more FHIRResource entries.
@@ -92,24 +101,15 @@ components:
             properties:
               resource:
                 $ref: '#/components/schemas/FHIRResource'
-    OperationOutcome:
+    FHIRResource:
       type: object
-      description: Standard FHIR OperationOutcome error body.
+      description: A standard HL7 FHIR R4 resource (US Core profiled). Structure follows the named US Core profile; not independently modeled here.
       properties:
         resourceType:
           type: string
-          example: OperationOutcome
-        issue:
-          type: array
-          items:
-            type: object
-            properties:
-              severity:
-                type: string
-              code:
-                type: string
-              diagnostics:
-                type: string
+        id:
+          type: string
+      additionalProperties: true
   securitySchemes:
     smartOnFhirAuthCode:
       type: oauth2

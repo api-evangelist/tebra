@@ -51,24 +51,24 @@ components:
         application/fhir+json:
           schema:
             $ref: '#/components/schemas/OperationOutcome'
-    FHIRBundleResponse:
-      description: FHIR searchset Bundle.
-      content:
-        application/fhir+json:
-          schema:
-            $ref: '#/components/schemas/FHIRBundle'
-    Forbidden:
-      description: Forbidden - a valid request was received but refused; typically the caller lacks the necessary permissions for the specified resource.
-      content:
-        application/fhir+json:
-          schema:
-            $ref: '#/components/schemas/OperationOutcome'
     Unauthorized:
       description: Unauthorized - the required authentication failed or was not provided.
       content:
         application/fhir+json:
           schema:
             $ref: '#/components/schemas/OperationOutcome'
+    Forbidden:
+      description: Forbidden - a valid request was received but refused; typically the caller lacks the necessary permissions for the specified resource.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    FHIRBundleResponse:
+      description: FHIR searchset Bundle.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/FHIRBundle'
     TooManyRequests:
       description: Too Many Requests - too many requests sent in a given time period.
       content:
@@ -76,25 +76,6 @@ components:
           schema:
             $ref: '#/components/schemas/OperationOutcome'
   schemas:
-    FHIRBundle:
-      type: object
-      description: Standard FHIR R4 searchset Bundle wrapping zero or more FHIRResource entries.
-      properties:
-        resourceType:
-          type: string
-          example: Bundle
-        type:
-          type: string
-          example: searchset
-        total:
-          type: integer
-        entry:
-          type: array
-          items:
-            type: object
-            properties:
-              resource:
-                $ref: '#/components/schemas/FHIRResource'
     OperationOutcome:
       type: object
       description: Standard FHIR OperationOutcome error body.
@@ -122,6 +103,25 @@ components:
         id:
           type: string
       additionalProperties: true
+    FHIRBundle:
+      type: object
+      description: Standard FHIR R4 searchset Bundle wrapping zero or more FHIRResource entries.
+      properties:
+        resourceType:
+          type: string
+          example: Bundle
+        type:
+          type: string
+          example: searchset
+        total:
+          type: integer
+        entry:
+          type: array
+          items:
+            type: object
+            properties:
+              resource:
+                $ref: '#/components/schemas/FHIRResource'
   securitySchemes:
     smartOnFhirAuthCode:
       type: oauth2

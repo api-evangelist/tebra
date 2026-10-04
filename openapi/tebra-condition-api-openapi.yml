@@ -40,25 +40,6 @@ paths:
         '403':
           $ref: '#/components/responses/Forbidden'
 components:
-  responses:
-    FHIRBundleResponse:
-      description: FHIR searchset Bundle.
-      content:
-        application/fhir+json:
-          schema:
-            $ref: '#/components/schemas/FHIRBundle'
-    Forbidden:
-      description: Forbidden - a valid request was received but refused; typically the caller lacks the necessary permissions for the specified resource.
-      content:
-        application/fhir+json:
-          schema:
-            $ref: '#/components/schemas/OperationOutcome'
-    Unauthorized:
-      description: Unauthorized - the required authentication failed or was not provided.
-      content:
-        application/fhir+json:
-          schema:
-            $ref: '#/components/schemas/OperationOutcome'
   schemas:
     OperationOutcome:
       type: object
@@ -78,6 +59,15 @@ components:
                 type: string
               diagnostics:
                 type: string
+    FHIRResource:
+      type: object
+      description: A standard HL7 FHIR R4 resource (US Core profiled). Structure follows the named US Core profile; not independently modeled here.
+      properties:
+        resourceType:
+          type: string
+        id:
+          type: string
+      additionalProperties: true
     FHIRBundle:
       type: object
       description: Standard FHIR R4 searchset Bundle wrapping zero or more FHIRResource entries.
@@ -97,15 +87,25 @@ components:
             properties:
               resource:
                 $ref: '#/components/schemas/FHIRResource'
-    FHIRResource:
-      type: object
-      description: A standard HL7 FHIR R4 resource (US Core profiled). Structure follows the named US Core profile; not independently modeled here.
-      properties:
-        resourceType:
-          type: string
-        id:
-          type: string
-      additionalProperties: true
+  responses:
+    Unauthorized:
+      description: Unauthorized - the required authentication failed or was not provided.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    Forbidden:
+      description: Forbidden - a valid request was received but refused; typically the caller lacks the necessary permissions for the specified resource.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    FHIRBundleResponse:
+      description: FHIR searchset Bundle.
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/FHIRBundle'
   securitySchemes:
     smartOnFhirAuthCode:
       type: oauth2

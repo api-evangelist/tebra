@@ -53,6 +53,14 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/tebra.png
 tags:
 - Healthcare
 - Practice Management
+- Electronic Health Records
+- Medical Billing
+- Patient Engagement
+- Kareo
+- PatientPop
+tags_raw:
+- Healthcare
+- Practice Management
 - EHR
 - Medical Billing
 - Patient Engagement
@@ -488,6 +496,8 @@ apis:
   humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
   baseURL: https://webservice.kareo.com/services/soap/2.1
   tags:
+  - AllergyIntolerance
+  tags_raw:
   - Allergy Intolerance
   properties:
   - type: OpenAPI
@@ -506,6 +516,8 @@ apis:
   humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
   baseURL: https://webservice.kareo.com/services/soap/2.1
   tags:
+  - CarePlan
+  tags_raw:
   - Care plan
   properties:
   - type: OpenAPI
@@ -524,6 +536,8 @@ apis:
   humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
   baseURL: https://webservice.kareo.com/services/soap/2.1
   tags:
+  - DocumentReference
+  tags_raw:
   - Document Reference
   properties:
   - type: OpenAPI
@@ -542,6 +556,8 @@ apis:
   humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
   baseURL: https://webservice.kareo.com/services/soap/2.1
   tags:
+  - MedicationRequest
+  tags_raw:
   - Medication Request
   properties:
   - type: OpenAPI
@@ -560,6 +576,8 @@ apis:
   humanURL: https://helpme.tebra.com/Tebra_PM/12_API_and_Integration
   baseURL: https://webservice.kareo.com/services/soap/2.1
   tags:
+  - PractitionerRole
+  tags_raw:
   - Practitioner Role
   properties:
   - type: OpenAPI
